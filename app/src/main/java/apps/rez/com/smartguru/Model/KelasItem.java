@@ -4,7 +4,7 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
-public class DataItem{
+public class KelasItem {
 
 	@SerializedName("kelas")
 	private String kelas;
@@ -42,7 +42,7 @@ public class DataItem{
 	@Override
  	public String toString(){
 		return 
-			"DataItem{" + 
+			"KelasItem{" +
 			"kelas = '" + kelas + '\'' + 
 			",id = '" + id + '\'' + 
 			",mata_pelajaran = '" + mataPelajaran + '\'' + 

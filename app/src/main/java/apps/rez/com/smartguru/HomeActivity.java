@@ -72,6 +72,7 @@ public class HomeActivity extends MainActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(new KelasAdapter(dataList));
+        ApiClient.BASE_URL = "http://192.168.43.57:8080/rest-api/wpu-rest-server/api/kelas/";
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         ha = this;
@@ -89,7 +90,7 @@ public class HomeActivity extends MainActivity {
                 for (int i = 0; i < response.body().getData().size(); i++) {
                     list.add(response.body());
                 }
-                Log.d("Retrofit Get", "Jumlah data Kontak : " + String.valueOf(response.body().toString()));
+                Log.d("Retrofit Get", "Jumlah data Kelas : " + String.valueOf(response.body().toString()));
                 mAdapter = new KelasAdapter(list);
                 mRecyclerView.setAdapter(mAdapter);
                 swipeRefreshLayout.setEnabled(false);

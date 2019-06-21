@@ -2,14 +2,8 @@ package apps.rez.com.smartguru;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,19 +14,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import apps.rez.com.smartguru.Adapter.KelasAdapter;
-import apps.rez.com.smartguru.Model.DataItem;
-import apps.rez.com.smartguru.Model.DataKelas;
-import apps.rez.com.smartguru.Rest.ApiClient;
-import apps.rez.com.smartguru.Rest.ApiInterface;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -118,7 +102,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             overridePendingTransition(0, 0);
         } else if (id == R.id.drawer_item_siswa) {
-            startActivity(new Intent(this, SecondActivity.class));
+            startActivity(new Intent(this, SiswaActivity.class));
             navigationView.getMenu().getItem(1);
             navigationView.setCheckedItem(R.id.drawer_item_siswa);
             overridePendingTransition(0, 0);

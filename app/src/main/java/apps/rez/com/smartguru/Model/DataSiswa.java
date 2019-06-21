@@ -1,23 +1,23 @@
 package apps.rez.com.smartguru.Model;
 
 import java.util.List;
-import javax.annotation.Generated;;
+import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
-public class DataKelas{
+public class DataSiswa{
 
 	@SerializedName("data")
-	private List<KelasItem> data;
+	private List<SiswaItem> data;
 
 	@SerializedName("status")
 	private boolean status;
 
-	public void setData(List<KelasItem> data){
+	public void setData(List<SiswaItem> data){
 		this.data = data;
 	}
 
-	public List<KelasItem> getData(){
+	public List<SiswaItem> getData(){
 		return data;
 	}
 
@@ -32,7 +32,7 @@ public class DataKelas{
 	@Override
  	public String toString(){
 		return 
-			"DataKelas{" +
+			"DataSiswa{" + 
 			"data = '" + data + '\'' + 
 			",status = '" + status + '\'' + 
 			"}";

@@ -10,8 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static String BASE_URL = "http://192.168.100.14:8080/rest-api/wpu-rest-server/api/kelas/";
-//    public static final String BASE_URL = "http://192.168.43.57:8080/rest-api/wpu-rest-server/api/kelas/";
+//    public static String BASE_URL = "http://192.168.100.14:8080/rest-api/wpu-rest-server/api/kelas/";
+    public static String BASE_URL = "";
 //    public static final String BASE_URL = "http://belajar-restserver.000webhostapp.com/index.php/kontak/";
     private static Retrofit retrofit = null;
 

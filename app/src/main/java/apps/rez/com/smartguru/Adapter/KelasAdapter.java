@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import apps.rez.com.smartguru.Model.DataItem;
 import apps.rez.com.smartguru.Model.DataKelas;
 import apps.rez.com.smartguru.R;
 
