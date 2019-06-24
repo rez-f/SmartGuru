@@ -6,8 +6,38 @@ import com.google.gson.annotations.SerializedName;
 @Generated("com.robohorse.robopojogenerator")
 public class SiswaItem {
 
+	@SerializedName("nama")
+	private String nama;
+
+	@SerializedName("nis")
+	private String nis;
+
 	@SerializedName("nisn")
 	private String nisn;
+
+	@SerializedName("alamat")
+	private String alamat;
+
+	@SerializedName("agama")
+	private String agama;
+
+	@SerializedName("tempat_lahir")
+	private String tempatLahir;
+
+	@SerializedName("tanggal_lahir")
+	private String tanggalLahir;
+
+	@SerializedName("jenis_kelamin")
+	private String jenisKelamin;
+
+	@SerializedName("nama_ayah")
+	private String namaAyah;
+
+	@SerializedName("alamat_ayah")
+	private String alamatAyah;
+
+	@SerializedName("pekerjaan_ayah")
+	private String pekerjaanAyah;
 
 	@SerializedName("nama_ibu")
 	private String namaIbu;
@@ -15,47 +45,17 @@ public class SiswaItem {
 	@SerializedName("alamat_ibu")
 	private String alamatIbu;
 
-	@SerializedName("nama_wali")
-	private String namaWali;
-
-	@SerializedName("agama")
-	private String agama;
-
 	@SerializedName("pekerjaan_ibu")
 	private String pekerjaanIbu;
 
-	@SerializedName("pekerjaan_wali")
-	private String pekerjaanWali;
+	@SerializedName("nama_wali")
+	private String namaWali;
 
 	@SerializedName("alamat_wali")
 	private String alamatWali;
 
-	@SerializedName("alamat")
-	private String alamat;
-
-	@SerializedName("nama")
-	private String nama;
-
-	@SerializedName("tempat_lahir")
-	private String tempatLahir;
-
-	@SerializedName("nama_ayah")
-	private String namaAyah;
-
-	@SerializedName("nis")
-	private String nis;
-
-	@SerializedName("alamat_ayah")
-	private String alamatAyah;
-
-	@SerializedName("jenis_kelamin")
-	private String jenisKelamin;
-
-	@SerializedName("pekerjaan_ayah")
-	private String pekerjaanAyah;
-
-	@SerializedName("tanggal_lahir")
-	private String tanggalLahir;
+	@SerializedName("pekerjaan_wali")
+	private String pekerjaanWali;
 
 	public void setNisn(String nisn){
 		this.nisn = nisn;

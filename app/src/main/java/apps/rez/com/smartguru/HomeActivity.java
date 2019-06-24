@@ -46,15 +46,6 @@ public class HomeActivity extends MainActivity {
         View view = LayoutInflater.from(this).inflate(R.layout.home_activity, null, false);
         drawer.addView(view, 0);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerKelas);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,ConstraintLayout.LayoutParams.MATCH_PARENT));
@@ -72,7 +63,7 @@ public class HomeActivity extends MainActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(new KelasAdapter(dataList));
-        ApiClient.BASE_URL = "http://192.168.43.57:8080/rest-api/wpu-rest-server/api/kelas/";
+        ApiClient.BASE_URL = "http://192.168.100.14:8080/rest-api/wpu-rest-server/api/";
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         ha = this;

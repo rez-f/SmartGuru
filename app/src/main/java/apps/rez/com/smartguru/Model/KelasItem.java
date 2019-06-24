@@ -43,8 +43,8 @@ public class KelasItem {
  	public String toString(){
 		return 
 			"KelasItem{" +
-			"kelas = '" + kelas + '\'' + 
-			",id = '" + id + '\'' + 
+			"id = '" + id + '\'' +
+			",kelas = '" + kelas + '\'' +
 			",mata_pelajaran = '" + mataPelajaran + '\'' + 
 			"}";
 		}

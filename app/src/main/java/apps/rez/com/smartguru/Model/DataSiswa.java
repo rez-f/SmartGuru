@@ -5,7 +5,7 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
-public class DataSiswa{
+public class DataSiswa {
 
 	@SerializedName("data")
 	private List<SiswaItem> data;
@@ -32,7 +32,7 @@ public class DataSiswa{
 	@Override
  	public String toString(){
 		return 
-			"DataSiswa{" + 
+			"DataSiswa{" +
 			"data = '" + data + '\'' + 
 			",status = '" + status + '\'' + 
 			"}";

@@ -19,7 +19,6 @@ import java.util.List;
 import apps.rez.com.smartguru.Adapter.KelasAdapter;
 import apps.rez.com.smartguru.Adapter.SiswaAdapter;
 import apps.rez.com.smartguru.Model.DataSiswa;
-import apps.rez.com.smartguru.Model.Siswa;
 import apps.rez.com.smartguru.Rest.ApiClient;
 import apps.rez.com.smartguru.Rest.ApiInterface;
 import retrofit2.Call;
@@ -47,15 +46,6 @@ public class SiswaActivity extends MainActivity {
         View view = LayoutInflater.from(this).inflate(R.layout.home_activity, null, false);
         drawer.addView(view, 0);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerKelas);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,ConstraintLayout.LayoutParams.MATCH_PARENT));
@@ -80,7 +70,7 @@ public class SiswaActivity extends MainActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(new KelasAdapter(dataList));
-        ApiClient.BASE_URL = "http://192.168.43.215:8080/rest-api/wpu-rest-server/api/siswa/";
+        ApiClient.BASE_URL = "http://192.168.100.14:8080/rest-api/wpu-rest-server/api/";
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         sa = this;
@@ -98,9 +88,11 @@ public class SiswaActivity extends MainActivity {
                 for (int i = 0; i < response.body().getData().size(); i++) {
                     list.add(response.body());
                 }
+                Log.d("Retrofit Get","Code : "+response.code());
+                Log.d("Retrofit Get", "Jumlah data Siswa : " + response.body().getData().get(0).getNama());
                 Log.d("Retrofit Get", "Jumlah data Siswa : " + response.body().toString());
-//                mAdapter = new SiswaAdapter(list);
-//                mRecyclerView.setAdapter(mAdapter);
+                mAdapter = new SiswaAdapter(list);
+                mRecyclerView.setAdapter(mAdapter);
                 swipeRefreshLayout.setEnabled(false);
             }
 
