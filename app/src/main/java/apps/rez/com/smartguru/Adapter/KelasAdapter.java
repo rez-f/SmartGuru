@@ -41,6 +41,11 @@ public class KelasAdapter extends RecyclerView.Adapter<KelasAdapter.MyViewHolder
         return mKelasList.size();
     }
 
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextViewId, mTextViewKelas, mTextViewMataPelajaran;
 

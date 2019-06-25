@@ -48,17 +48,20 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/cardViewTambah"
+                        layout="@layout/kelas_view_tambah_data" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recyclerKelas"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         tools:listitem="@layout/kelas_list" />
+
                 </LinearLayout>
             </ScrollView>
-
         </android.support.v4.widget.SwipeRefreshLayout>
-
     </android.support.constraint.ConstraintLayout>
 </android.support.design.widget.CoordinatorLayout>

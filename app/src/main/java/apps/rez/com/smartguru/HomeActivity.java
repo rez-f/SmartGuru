@@ -1,26 +1,40 @@
 package apps.rez.com.smartguru;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import apps.rez.com.smartguru.Adapter.KelasAdapter;
 import apps.rez.com.smartguru.Model.DataKelas;
+import apps.rez.com.smartguru.Model.Kelas;
+import apps.rez.com.smartguru.Model.KelasItem;
 import apps.rez.com.smartguru.Rest.ApiClient;
 import apps.rez.com.smartguru.Rest.ApiInterface;
+import apps.rez.com.smartguru.listener.ItemClickSupport;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +51,9 @@ public class HomeActivity extends MainActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
-    public static HomeActivity ha;
+    private CardView cardView;
+    private StringBuilder text;
+    private boolean fileServerExist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +62,26 @@ public class HomeActivity extends MainActivity {
         View view = LayoutInflater.from(this).inflate(R.layout.home_activity, null, false);
         drawer.addView(view, 0);
 
+        cardView = (CardView) findViewById(R.id.cardViewTambah);
+        cardView.setVisibility(View.INVISIBLE);
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ModalTambahKelas tambahKelas = new ModalTambahKelas();
+                FragmentManager fm = getSupportFragmentManager();
+                tambahKelas.show(fm, "Fragment Tambah Kelas");
+            }
+        });
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerKelas);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
-        swipeRefreshLayout.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,ConstraintLayout.LayoutParams.MATCH_PARENT));
+        swipeRefreshLayout.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }, 2000);
@@ -63,28 +91,42 @@ public class HomeActivity extends MainActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(new KelasAdapter(dataList));
-        ApiClient.BASE_URL = "http://192.168.100.14:8080/rest-api/wpu-rest-server/api/";
-        mApiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        ha = this;
+        getServerIpFromFile();
+
+        if (fileServerExist) {
+            ApiClient.BASE_URL = "" + text;
+        } else {
+            ApiClient.BASE_URL = "http://192.168.43.57:8080/rest-api/wpu-rest-server/api/";
+        }
+
+        mApiInterface = ApiClient.getClient().create(ApiInterface.class);
         refresh();
     }
 
-    public void refresh() {
+    private void refresh() {
         final List list = new ArrayList();
         Call<DataKelas> kelasCall = mApiInterface.getKelas();
         kelasCall.enqueue(new Callback<DataKelas>() {
 
             @Override
-            public void onResponse(Call<DataKelas> call, Response<DataKelas> response) {
-                DataKelas KelasList = response.body();
+            public void onResponse(Call<DataKelas> call, final Response<DataKelas> response) {
+                final DataKelas KelasList = response.body();
                 for (int i = 0; i < response.body().getData().size(); i++) {
                     list.add(response.body());
                 }
                 Log.d("Retrofit Get", "Jumlah data Kelas : " + String.valueOf(response.body().toString()));
                 mAdapter = new KelasAdapter(list);
                 mRecyclerView.setAdapter(mAdapter);
+                cardView.setVisibility(View.VISIBLE);
                 swipeRefreshLayout.setEnabled(false);
+
+                ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                        tampilKelasDetail(response.body().getData().get(position));
+                    }
+                });
             }
 
             @Override
@@ -94,5 +136,38 @@ public class HomeActivity extends MainActivity {
                 Toast.makeText(HomeActivity.this, t.toString(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void tampilKelasDetail(KelasItem dataKelas) {
+        Kelas kelas = new Kelas();
+        kelas.setKelas(dataKelas.getKelas());
+        kelas.setMataPelajaran(dataKelas.getMataPelajaran());
+        Intent intent = new Intent(HomeActivity.this, KelasDetailActivity.class);
+        intent.putExtra(KelasDetailActivity.EXTRAS_KELAS, kelas);
+        startActivity(intent);
+    }
+
+    private void getServerIpFromFile() {
+        File sdcard = Environment.getExternalStorageDirectory();
+
+        //Get the text file
+        File file = new File(sdcard, "server.txt");
+
+        text = new StringBuilder();
+
+        //Read text from file
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+            }
+            fileServerExist = true;
+            br.close();
+        } catch (IOException e) {
+            //You'll need to add proper error handling here
+            Toast.makeText(this, "File Tidak ada", Toast.LENGTH_LONG).show();
+            fileServerExist = false;
+        }
     }
 }

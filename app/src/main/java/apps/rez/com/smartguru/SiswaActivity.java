@@ -43,10 +43,12 @@ public class SiswaActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        View view = LayoutInflater.from(this).inflate(R.layout.home_activity, null, false);
+        View view = LayoutInflater.from(this).inflate(R.layout.siswa_activity, null, false);
         drawer.addView(view, 0);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerKelas);
+        setTitle("Daftar Siswa");
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerSiswa);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,ConstraintLayout.LayoutParams.MATCH_PARENT));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -70,7 +72,8 @@ public class SiswaActivity extends MainActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(new KelasAdapter(dataList));
-        ApiClient.BASE_URL = "http://192.168.100.14:8080/rest-api/wpu-rest-server/api/";
+//        ApiClient.BASE_URL = "http://192.168.100.14:8080/rest-api/wpu-rest-server/api/";
+        ApiClient.BASE_URL = "http://192.168.43.57:8080/rest-api/wpu-rest-server/api/";
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         sa = this;
