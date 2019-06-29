@@ -1,0 +1,116 @@
+@startuml
+
+autonumber
+hide footbox
+title Mengelola Nilai Siswa
+
+Actor Guru
+boundary Home
+boundary KelasDetail
+boundary Siswa
+control HomeActivity
+control KelasDetailActivity
+control SiswaFragment
+control WebserviceAPI
+
+HomeActivity -> WebserviceAPI : HTTP Request
+    activate HomeActivity
+    activate WebserviceAPI
+
+    note right of HomeActivity
+    GET Data Kelas
+        end note
+
+    return HTTP Response
+
+    note right of HomeActivity
+    Berupa JSON
+        end note
+
+HomeActivity --> Home : setContentView()
+    deactivate HomeActivity
+    activate Home
+
+Guru -> Home : Klik Kelas
+    activate Guru
+    deactivate Guru
+
+Home -> HomeActivity : onClick()
+    deactivate Home
+    activate HomeActivity
+
+HomeActivity -> KelasDetailActivity : startActivity()
+    deactivate HomeActivity
+    activate KelasDetailActivity
+
+KelasDetailActivity -> WebserviceAPI : HTTP Request
+    deactivate KelasDetailActivity
+    activate WebserviceAPI
+
+    note right of KelasDetailActivity
+    GET Data Siswa
+        end note
+
+    return HTTP Response
+
+    note right of KelasDetailActivity
+    Berupa JSON
+        end note
+
+    activate KelasDetailActivity
+KelasDetailActivity --> KelasDetail : setContentView()
+    deactivate KelasDetailActivity
+    activate KelasDetail
+    deactivate KelasDetail
+
+Guru -> KelasDetail : Klik Siswa
+    activate Guru
+    deactivate Guru
+
+KelasDetail -> KelasDetailActivity : onClick()
+    deactivate KelasDetail
+    activate KelasDetailActivity
+
+KelasDetailActivity -> SiswaFragment : show()
+    deactivate KelasDetailActivity
+    activate SiswaFragment
+
+SiswaFragment --> Siswa : inflateLayout()
+    deactivate SiswaFragment
+    activate Siswa
+
+Guru -> Siswa : Klik Tampilan Penilaian
+    activate Guru
+
+Guru -> Siswa : Input Data Penilaian
+    note right of Guru
+    Hanya Penilaian
+    Mata Pelajaran
+    yang diampu
+        end note
+
+Guru -> Siswa : Klik Tombol Simpan
+    deactivate Guru
+
+Siswa -> SiswaFragment : Mengirim Data
+    deactivate Siswa
+    activate SiswaFragment
+
+SiswaFragment -> WebserviceAPI : HTTP Request
+    activate WebserviceAPI
+
+    note right of SiswaFragment
+        POST Data Penilaian
+            end note
+
+        return HTTP Response
+
+        note right of SiswaFragment
+        Berupa JSON
+            end note
+
+SiswaFragment -> Siswa : inflateLayout()
+    deactivate SiswaFragment
+    activate Siswa
+
+@enduml

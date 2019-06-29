@@ -1,0 +1,78 @@
+@startuml
+
+autonumber
+hide footbox
+title Membuat Rekap Nilai
+
+Actor Guru
+boundary Home
+boundary KelasDetail
+control HomeActivity
+control KelasDetailActivity
+control WebserviceAPI
+
+HomeActivity -> WebserviceAPI : HTTP Request
+    activate HomeActivity
+    activate WebserviceAPI
+    note right of HomeActivity
+    GET Data Kelas
+        end note
+
+    return HTTP Response
+
+    note right of HomeActivity
+    Berupa JSON
+         end note
+
+HomeActivity -> Home : setContentView()
+    deactivate HomeActivity
+    activate Home
+
+Guru -> Home : Klik Kelas
+    activate Guru
+    deactivate Guru
+
+Home -> HomeActivity : onClick()
+    deactivate Home
+    activate HomeActivity
+
+HomeActivity -> KelasDetailActivity : startActivity()
+    deactivate HomeActivity
+
+KelasDetailActivity --> KelasDetail : setContentView()
+    deactivate KelasDetailActivity
+    activate KelasDetail
+
+Guru -> KelasDetail : Klik Buat Rekap Nilai
+    activate Guru
+    deactivate Guru
+
+KelasDetail -> KelasDetailActivity : onClick()
+    deactivate KelasDetail
+    activate KelasDetailActivity
+
+KelasDetailActivity -> WebserviceAPI : HTTP Request
+    deactivate KelasDetailActivity
+    activate WebserviceAPI
+    note right of KelasDetailActivity
+    POST Data Kelas
+        end note
+
+    return HTTP Response
+
+    activate KelasDetailActivity
+
+    note right of KelasDetailActivity
+    Berupa JSON
+        end note
+
+KelasDetailActivity -> Browser : startActivity()
+    deactivate KelasDetailActivity
+    activate Browser
+
+Guru -> Browser : Klik Icon Printer
+    deactivate Browser
+    activate Guru
+    deactivate Guru
+
+@enduml

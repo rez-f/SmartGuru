@@ -10,13 +10,12 @@ rectangle "Aplikasi Penilaian Kurikulum 2013"{
     Guru -- (Melihat Daftar Siswa)
     Guru -- (Mengelola Nilai Siswa)
     Guru -- (Mencetak Rekap Nilai)
-    Guru -- (Logout)
+    Guru -- (Melihat Data Siswa)
     Walikelas -- (Melihat Daftar Siswa)
     Walikelas -- (Melihat Data Siswa)
     Walikelas -- (Mengelola Nilai Rapor siswa)
     Walikelas -- (Mencetak Rapor siswa)
     Walikelas -- (Mencetak Transkrip Nilai Siswa)
-    Walikelas -- (Logout)
 
     (Mengelola Data Mengajar)..> (Login) : include
     (Mengelola Nilai Siswa)..> (Login) : include

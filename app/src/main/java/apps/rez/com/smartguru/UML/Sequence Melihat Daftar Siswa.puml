@@ -1,0 +1,64 @@
+@startuml
+
+autonumber
+hide footbox
+title Melihat Daftar Siswa
+
+Actor Guru
+boundary Home
+boundary KelasDetail
+control HomeActivity
+control KelasDetailActivity
+control WebserviceAPI
+
+HomeActivity -> WebserviceAPI : HTTP Request
+    activate HomeActivity
+    activate WebserviceAPI
+
+    note right of HomeActivity
+    GET Data Kelas
+        end note
+
+    return HTTP Response
+
+    note right of HomeActivity
+    Berupa JSON
+        end note
+
+HomeActivity --> Home : setContentView()
+    deactivate HomeActivity
+    activate Home
+
+Guru -> Home : Klik Kelas
+    activate Guru
+    deactivate Guru
+
+Home -> HomeActivity : onClick()
+    deactivate Home
+    activate HomeActivity
+
+HomeActivity -> KelasDetailActivity : startActivity()
+    deactivate HomeActivity
+    activate KelasDetailActivity
+
+KelasDetailActivity -> WebserviceAPI : HTTP Request
+    deactivate KelasDetailActivity
+    activate WebserviceAPI
+
+    note right of KelasDetailActivity
+    GET Data Siswa
+        end note
+
+    return HTTP Response
+
+    activate KelasDetailActivity
+
+    note right of KelasDetailActivity
+    Berupa JSON
+        end note
+
+KelasDetailActivity --> KelasDetail : setContentView()
+    deactivate KelasDetailActivity
+    activate KelasDetail
+
+@enduml

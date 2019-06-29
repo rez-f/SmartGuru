@@ -1,0 +1,82 @@
+@startuml
+
+autonumber
+hide footbox
+title Menambah Data Mengajar
+
+Actor Guru
+boundary Home
+boundary TambahDataKelas
+control HomeActivity
+control TambahDataFragment
+control WebserviceAPI
+
+HomeActivity -> WebserviceAPI : HTTP Request
+    activate HomeActivity
+    activate WebserviceAPI
+
+    note right of HomeActivity
+    GET Data Kelas
+        end note
+
+    return HTTP Response
+
+    note right of HomeActivity
+    Berupa JSON
+         end note
+
+HomeActivity --> Home : setContentView()
+    deactivate HomeActivity
+    activate Home
+
+Guru -> Home : Klik Menu Tambah Data Kelas
+    activate Guru
+    deactivate Guru
+
+Home -> HomeActivity : onClick()
+    deactivate Home
+    activate HomeActivity
+
+HomeActivity -> TambahDataFragment : show()
+    deactivate HomeActivity
+    activate TambahDataFragment
+
+TambahDataFragment --> TambahDataKelas : inflateLayout()
+    deactivate TambahDataFragment
+    activate TambahDataKelas
+
+Guru -> TambahDataKelas : Input Data Kelas
+    deactivate
+    activate Guru
+    note right of Guru
+    nama kelas, mata pelajaran yang diajar
+        end note
+
+Guru -> TambahDataKelas : Klik Tombol Simpan
+    deactivate Guru
+    activate TambahDataKelas
+
+
+TambahDataKelas -> TambahDataFragment : Mengirim Data Kelas
+    deactivate TambahDataKelas
+    activate TambahDataFragment
+
+TambahDataFragment -> WebserviceAPI : HTTP Request
+    deactivate TambahDataFragment
+    activate WebserviceAPI
+    note right of TambahDataFragment
+    POST Data (username,password)
+        end note
+
+WebserviceAPI --> HomeActivity : HTTP Response
+    deactivate WebserviceAPI
+    activate HomeActivity
+
+    note right of HomeActivity
+    Berupa JSON
+        end note
+
+HomeActivity --> Home : setContentView()
+    deactivate HomeActivity
+    activate Home
+@enduml
