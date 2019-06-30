@@ -34,7 +34,6 @@ public class ModalTambahKelas extends DialogFragment implements View.OnClickList
             // Inflate the layout for this fragment
             getDialog().setTitle("Tambah Kelas");
             getDialog().getWindow().setBackgroundDrawableResource(R.color.colorWhite);
-            getDialog().getWindow().setTitleColor(getResources().getColor(R.color.colorPrimary));
 
         return inflater.inflate(R.layout.fragment_modal_tambah_kelas, container, false);
     }
