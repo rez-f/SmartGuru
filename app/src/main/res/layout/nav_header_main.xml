@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="Roboto"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/nav_header_title"
+        android:text="Nama Lengkap User"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#fff"
         android:textSize="18sp" />
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="Roboto"
-        android:text="@string/nav_header_subtitle"
+        android:text="username"
         android:textColor="#fff" />
 
 </LinearLayout>

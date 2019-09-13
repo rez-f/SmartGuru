@@ -14,7 +14,6 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import java.util.List;
 import java.util.Random;
 
-import apps.rez.com.smartguru.Model.DataKelas;
 import apps.rez.com.smartguru.Model.DataSiswa;
 import apps.rez.com.smartguru.R;
 
@@ -24,13 +23,13 @@ import apps.rez.com.smartguru.R;
 
 public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.MyViewHolder>{
 
-    List<DataSiswa> mSiswaList;
-    TextDrawable drawable;
-    String nama;
-    int[] red = {63,76,244,233,156,103,0,255,139,255,205,33,255,255,};
-    int[] green = {81,175,67,30,39,58,188,152,195,235,220,150,193,87,169};
-    int[] blue = {181,80,54,99,176,183,212,0,74,59,57,243,7,34,244};
-    int index = 0;
+    private List<DataSiswa> mSiswaList;
+    private TextDrawable mDrawable;
+    private String mNama;
+    private int[] red = {63,76,244,233,156,103,0,255,139,255,205,33,255,255,};
+    private int[] green = {81,175,67,30,39,58,188,152,195,235,220,150,193,87,169};
+    private int[] blue = {181,80,54,99,176,183,212,0,74,59,57,243,7,34,244};
+    private int index = 0;
     Random random;
 
     public SiswaAdapter(List<DataSiswa> SiswaList) {
@@ -39,7 +38,7 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.MyViewHolder
 
     @Override
     public MyViewHolder onCreateViewHolder (ViewGroup parent,int viewType){
-        View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.siswa_list, parent, false);
+        View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_siswa, parent, false);
         MyViewHolder mViewHolder = new MyViewHolder(mView);
         random = new Random();
         return mViewHolder;
@@ -47,8 +46,8 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder (MyViewHolder holder,final int position){
-        nama = mSiswaList.get(position).getData().get(position).getNama();
-        holder.mTextViewNamaSiswa.setText(nama);
+        mNama = mSiswaList.get(position).getData().get(position).getNama();
+        holder.mTextViewNamaSiswa.setText(mNama);
         holder.mTextViewNIS.setText(mSiswaList.get(position).getData().get(position).getNis());
         holder.mTextViewJenisKelamin.setText(mSiswaList.get(position).getData().get(position).getJenisKelamin());
 
@@ -61,9 +60,9 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.MyViewHolder
 
             Log.d("Nilai Index","Index = "+index);
 
-            drawable = TextDrawable.builder()
-                    .buildRound(String.valueOf(nama.charAt(0)), Color.rgb(red[index],green[index],blue[index]));
-            holder.mImageViewLetter.setImageDrawable(drawable);
+            mDrawable = TextDrawable.builder()
+                    .buildRound(String.valueOf(mNama.charAt(0)), Color.rgb(red[index],green[index],blue[index]));
+            holder.mImageViewLetter.setImageDrawable(mDrawable);
         }
     }
 
@@ -82,8 +81,6 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.MyViewHolder
             mTextViewNIS = (TextView) itemView.findViewById(R.id.tvNIS);
             mTextViewJenisKelamin = (TextView) itemView.findViewById(R.id.tvJenisKelamin);
             mImageViewLetter = (ImageView) itemView.findViewById(R.id.ivLetter);
-
-
         }
     }
 }

@@ -54,7 +54,7 @@
                         android:id="@+id/recyclerSiswa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/siswa_list" />
+                        tools:listitem="@layout/list_siswa" />
                 </LinearLayout>
             </ScrollView>
 

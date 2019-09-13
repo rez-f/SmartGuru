@@ -7,17 +7,17 @@
         android:id="@+id/menu_top"
         android:checkableBehavior="single">
         <item
+            android:id="@+id/drawer_item_profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Profil"/>
+        <item
             android:id="@+id/drawer_item_kelas"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_inbox_black_24dp"
             android:title="Kelas"/>
         <item
             android:id="@+id/drawer_item_siswa"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_school_black_24dp"
             android:title="Siswa"/>
-        <item
-            android:id="@+id/drawer_item_kd"
-            android:icon="@drawable/ic_menu_send"
-            android:title="Kompetensi Dasar"/>
     </group>
 
     <group
@@ -25,8 +25,8 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/drawer_item_settings"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Settings" >
+            android:icon="@drawable/ic_backspace_black_24dp"
+            android:title="Logout" >
         </item>
     </group>
 

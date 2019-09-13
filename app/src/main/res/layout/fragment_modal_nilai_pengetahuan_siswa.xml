@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="25dp">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="Matematika"/>
+    </TableRow>
+    <TableRow
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="Kompetensi Dasar     : "/>
+        <Spinner
+            android:id="@+id/spinnerKD"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" />
+    </TableRow>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Penugasan"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"/>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="15dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="Nilai" />
+
+            <EditText
+                android:layout_width="30dp"
+                android:layout_height="match_parent" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="15dp">
+
+        <TextView
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="left|center"
+            android:text="Bobot" />
+
+            <EditText
+                android:layout_width="30dp"
+                android:layout_height="match_parent" />
+    </TableRow>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Penilaian Harian"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12dp"/>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="15dp">
+
+        <TextView
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="left|center"
+            android:text="Nilai" />
+
+            <EditText
+                android:layout_width="30dp"
+                android:layout_height="match_parent" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="15dp">
+
+        <TextView
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="left|center"
+            android:text="Bobot" />
+
+            <EditText
+                android:layout_width="30dp"
+                android:layout_height="match_parent"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="end"
+        android:gravity="end">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom|right"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:text="Batal" />
+
+        <TextView
+            android:layout_width="70dp"
+            android:paddingLeft="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:gravity="bottom|right"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:text="Input" />
+    </TableRow>
+
+</LinearLayout>

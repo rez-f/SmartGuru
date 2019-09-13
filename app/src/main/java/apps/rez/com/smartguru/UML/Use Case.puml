@@ -6,25 +6,25 @@ actor Walikelas
 
 rectangle "Aplikasi Penilaian Kurikulum 2013"{
 
-    Guru -- (Mengelola Data Mengajar)
+    Guru -- (Menambah Data Mengajar)
     Guru -- (Melihat Daftar Siswa)
     Guru -- (Mengelola Nilai Siswa)
     Guru -- (Mencetak Rekap Nilai)
     Guru -- (Melihat Data Siswa)
     Walikelas -- (Melihat Daftar Siswa)
     Walikelas -- (Melihat Data Siswa)
-    Walikelas -- (Mengelola Nilai Rapor siswa)
-    Walikelas -- (Mencetak Rapor siswa)
+    Walikelas -- (Mengelola Nilai Rapor Siswa)
+    Walikelas -- (Mencetak Rapor Siswa)
     Walikelas -- (Mencetak Transkrip Nilai Siswa)
 
-    (Mengelola Data Mengajar)..> (Login) : include
+    (Menambah Data Mengajar)..> (Login) : include
     (Mengelola Nilai Siswa)..> (Login) : include
     (Mencetak Rekap Nilai)..> (Login) : include
 
     (Melihat Daftar Siswa)..> (Login) : include
     (Melihat Data Siswa)..> (Login) : include
-    (Mengelola Nilai Rapor siswa)..> (Login) : include
-    (Mencetak Rapor siswa)..> (Login) : include
+    (Mengelola Nilai Rapor Siswa)..> (Login) : include
+    (Mencetak Rapor Siswa)..> (Login) : include
     (Mencetak Transkrip Nilai Siswa)..> (Login) : include
 
 }

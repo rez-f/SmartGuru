@@ -1,0 +1,103 @@
+@startuml
+
+autonumber
+hide footbox
+title Membuat Transkrip Nilai Siswa
+
+Actor Walikelas
+boundary Home
+boundary KelasDetail
+boundary Siswa
+control HomeActivity
+control KelasDetailActivity
+control SiswaFragment
+control WebserviceAPI
+
+HomeActivity -> WebserviceAPI : HTTP Request
+    activate HomeActivity
+    activate WebserviceAPI
+
+    note right of HomeActivity
+    GET Data Kelas
+        end note
+
+    return HTTP Response
+
+    note right of HomeActivity
+    Berupa JSON
+        end note
+
+HomeActivity --> Home : setContentView()
+    deactivate HomeActivity
+    activate Home
+
+Walikelas -> Home : Klik Kelas
+    activate Walikelas
+    deactivate Walikelas
+
+Home -> HomeActivity : onClick()
+    deactivate Home
+    activate HomeActivity
+
+HomeActivity -> KelasDetailActivity : startActivity()
+    deactivate HomeActivity
+    activate KelasDetailActivity
+
+KelasDetailActivity -> WebserviceAPI : HTTP Request
+    deactivate KelasDetailActivity
+    activate WebserviceAPI
+
+    note right of KelasDetailActivity
+    GET Data Siswa
+        end note
+
+    return HTTP Response
+
+    note right of KelasDetailActivity
+    Berupa JSON
+        end note
+
+    activate KelasDetailActivity
+KelasDetailActivity --> KelasDetail : setContentView()
+    deactivate KelasDetailActivity
+    activate KelasDetail
+    deactivate KelasDetail
+
+Walikelas -> KelasDetail : Klik Siswa
+    activate Walikelas
+    deactivate Walikelas
+
+KelasDetail -> KelasDetailActivity : onClick()
+    deactivate KelasDetail
+    activate KelasDetailActivity
+
+KelasDetailActivity -> SiswaFragment : show()
+    deactivate KelasDetailActivity
+    activate SiswaFragment
+
+SiswaFragment --> Siswa : inflateLayout()
+    deactivate SiswaFragment
+    activate Siswa
+
+Walikelas -> Siswa : Klik Menu Transkrip Nilai
+    activate Walikelas
+    deactivate Walikelas
+
+Siswa -> SiswaFragment : Mengirim Data
+    deactivate Siswa
+    activate SiswaFragment
+
+SiswaFragment -> WebserviceAPI : HTTP Request
+    activate WebserviceAPI
+
+    note right of SiswaFragment
+        GET Data Transkrip
+            end note
+
+        return HTTP Response
+
+SiswaFragment -> Browser : startActivity()
+    deactivate SiswaFragment
+    activate Browser
+
+@enduml

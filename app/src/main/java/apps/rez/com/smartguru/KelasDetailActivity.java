@@ -1,8 +1,6 @@
 package apps.rez.com.smartguru;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,7 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +16,7 @@ import apps.rez.com.smartguru.Model.Kelas;
 
 public class KelasDetailActivity extends AppCompatActivity {
 
-    public static final String EXTRAS_KELAS = "kelas_movie";
+    public static final String EXTRAS_KELAS = "kelas";
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -53,9 +50,9 @@ public class KelasDetailActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "Home");
-        adapter.addFragment(new TwoFragment(), "Siswa");
-        adapter.addFragment(new ThreeFragment(), "Berkas");
+        adapter.addFragment(new KelasHomeFragment(), "Home");
+        adapter.addFragment(new KelasSiswaFragment(), "Siswa");
+        adapter.addFragment(new KelasBerkasFragment(), "Berkas");
         viewPager.setAdapter(adapter);
     }
 

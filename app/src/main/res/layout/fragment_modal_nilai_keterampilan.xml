@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:padding="25dp">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="Matematika" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="Kompetensi Dasar     : " />
+
+        <Spinner
+            android:id="@+id/spinnerKD2"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="15dp">
+
+        <TextView
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="Praktik" />
+
+        <EditText
+            android:layout_width="30dp"
+            android:layout_height="match_parent" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="15dp">
+
+        <TextView
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="Produk" />
+
+        <EditText
+            android:layout_width="30dp"
+            android:layout_height="match_parent" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="15dp">
+
+        <TextView
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="Proyek" />
+
+        <EditText
+            android:layout_width="30dp"
+            android:layout_height="match_parent" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="15dp">
+
+        <TextView
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="Portofolio" />
+
+        <EditText
+            android:layout_width="30dp"
+            android:layout_height="match_parent" />
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="end"
+        android:gravity="end">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom|right"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:text="Batal" />
+
+        <TextView
+            android:layout_width="70dp"
+            android:paddingLeft="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:gravity="bottom|right"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            android:text="Input" />
+    </TableRow>
+
+</LinearLayout>

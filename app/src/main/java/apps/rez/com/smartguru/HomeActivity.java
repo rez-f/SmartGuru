@@ -4,21 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -59,20 +53,21 @@ public class HomeActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        View view = LayoutInflater.from(this).inflate(R.layout.home_activity, null, false);
+        View view = LayoutInflater.from(this).inflate(R.layout.activity_home, null, false);
         drawer.addView(view, 0);
 
+        /*
         cardView = (CardView) findViewById(R.id.cardViewTambah);
         cardView.setVisibility(View.INVISIBLE);
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ModalTambahKelas tambahKelas = new ModalTambahKelas();
+                TambahKelasModalFragment tambahKelas = new TambahKelasModalFragment();
                 FragmentManager fm = getSupportFragmentManager();
                 tambahKelas.show(fm, "Fragment Tambah Kelas");
             }
         });
-
+        */
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerKelas);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT));
@@ -112,21 +107,26 @@ public class HomeActivity extends MainActivity {
             @Override
             public void onResponse(Call<DataKelas> call, final Response<DataKelas> response) {
                 final DataKelas KelasList = response.body();
-                for (int i = 0; i < response.body().getData().size(); i++) {
-                    list.add(response.body());
-                }
-                Log.d("Retrofit Get", "Jumlah data Kelas : " + String.valueOf(response.body().toString()));
-                mAdapter = new KelasAdapter(list);
-                mRecyclerView.setAdapter(mAdapter);
-                cardView.setVisibility(View.VISIBLE);
-                swipeRefreshLayout.setEnabled(false);
 
-                ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-                    @Override
-                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                        tampilKelasDetail(response.body().getData().get(position));
+                if (response.body() != null){
+                    for (int i = 0; i < response.body().getData().size(); i++) {
+                        list.add(response.body());
                     }
-                });
+                    Log.d("Retrofit Get", "Jumlah data Kelas : " + String.valueOf(response.body().toString()));
+                    mAdapter = new KelasAdapter(list);
+                    mRecyclerView.setAdapter(mAdapter);
+//                    cardView.setVisibility(View.VISIBLE);
+                    swipeRefreshLayout.setEnabled(false);
+
+                    ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                        @Override
+                        public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                            tampilKelasDetail(response.body().getData().get(position));
+                        }
+                    });
+                }else{
+                    Toast.makeText(HomeActivity.this, "Tidak ada respon server", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

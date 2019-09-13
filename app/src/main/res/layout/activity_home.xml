@@ -50,15 +50,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <include
-                        android:id="@+id/cardViewTambah"
-                        layout="@layout/kelas_view_tambah_data" />
+                    <!--<include-->
+                        <!--android:id="@+id/cardViewTambah"-->
+                        <!--layout="@layout/kelas_view_tambah_data" />-->
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recyclerKelas"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/kelas_list" />
+                        tools:listitem="@layout/list_kelas" />
 
                 </LinearLayout>
             </ScrollView>

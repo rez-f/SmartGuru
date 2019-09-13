@@ -3,8 +3,6 @@ package apps.rez.com.smartguru;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +14,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import apps.rez.com.smartguru.Adapter.KelasAdapter;
 import apps.rez.com.smartguru.Adapter.SiswaAdapter;
 import apps.rez.com.smartguru.Model.DataSiswa;
 import apps.rez.com.smartguru.Rest.ApiClient;
@@ -43,7 +40,7 @@ public class SiswaActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        View view = LayoutInflater.from(this).inflate(R.layout.siswa_activity, null, false);
+        View view = LayoutInflater.from(this).inflate(R.layout.activity_siswa, null, false);
         drawer.addView(view, 0);
 
         setTitle("Daftar Siswa");
@@ -88,12 +85,17 @@ public class SiswaActivity extends MainActivity {
             @Override
             public void onResponse(Call<DataSiswa> call, Response<DataSiswa> response) {
                 DataSiswa dataSiswaList = response.body();
-                for (int i = 0; i < response.body().getData().size(); i++) {
-                    list.add(response.body());
+                if (response.body() != null){
+                    for (int i = 0; i < response.body().getData().size(); i++) {
+                        list.add(response.body());
+                    }
+                    mAdapter = new SiswaAdapter(list);
+                    mRecyclerView.setAdapter(mAdapter);
+                    swipeRefreshLayout.setEnabled(false);
+                }else{
+                    Toast.makeText(SiswaActivity.this, "Tidak ada respon server", Toast.LENGTH_SHORT).show();
                 }
-                mAdapter = new SiswaAdapter(list);
-                mRecyclerView.setAdapter(mAdapter);
-                swipeRefreshLayout.setEnabled(false);
+
             }
 
             @Override

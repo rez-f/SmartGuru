@@ -2,9 +2,6 @@ package apps.rez.com.smartguru;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
@@ -14,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +74,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -96,10 +94,10 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().getItem(1);
             navigationView.setCheckedItem(R.id.drawer_item_siswa);
             overridePendingTransition(0, 0);
-        } else if (id == R.id.drawer_item_kd) {
-            startActivity(new Intent(this, ThirdActivity.class));
+        } else if (id == R.id.drawer_item_profile) {
+            startActivity(new Intent(this, ProfileActivity.class));
             navigationView.getMenu().getItem(2);
-            navigationView.setCheckedItem(R.id.drawer_item_kd);
+            navigationView.setCheckedItem(R.id.drawer_item_profile);
             overridePendingTransition(0, 0);
         }
 

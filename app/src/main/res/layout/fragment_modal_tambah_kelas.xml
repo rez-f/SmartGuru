@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:titleTextColor="@color/colorPrimary"
-    app:subtitleTextColor="@color/colorPrimaryDark"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -18,10 +15,10 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/etPrismaAlas"
+            android:id="@+id/etKelas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Alas"/>
+            android:hint="Kelas"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -30,10 +27,10 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/etPrismaTinggi"
+            android:id="@+id/etTahunAjaran"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tinggi"/>
+            android:hint="Tahun Ajaran"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -44,25 +41,12 @@
         android:layout_marginTop="30dp">
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/btnTambah"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="end"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginRight="60dp"
-            android:text="Batal" />
-
-        <TextView
-            android:id="@+id/btnHitung"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:gravity="end"
-            android:text="Hitung" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="1dp"
+            android:text="Tambah"
+            android:textColor="@color/colorPrimary" />
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/tvHasil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"/>
 </LinearLayout>

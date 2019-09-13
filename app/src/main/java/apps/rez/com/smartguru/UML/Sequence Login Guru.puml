@@ -2,9 +2,9 @@
 
 autonumber
 hide footbox
-title Login Guru
+title Login Actor
 
-Actor Guru
+Actor Actor
 boundary Home
 boundary Login
 control LoginActivity
@@ -15,11 +15,11 @@ LoginActivity --> Login : setContentView()
     activate LoginActivity
     activate Login
 
-Guru -> Login : input username, password
-    activate Guru
+Actor -> Login : input username, password
+    activate Actor
 
-Guru -> Login : klik tombol login
-    deactivate Guru
+Actor -> Login : klik tombol login
+    deactivate Actor
 
 Login -> LoginActivity : login()
     deactivate Login
