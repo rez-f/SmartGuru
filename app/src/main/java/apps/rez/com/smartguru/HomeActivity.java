@@ -92,7 +92,7 @@ public class HomeActivity extends MainActivity {
         if (fileServerExist) {
             ApiClient.BASE_URL = "" + text;
         } else {
-            ApiClient.BASE_URL = "http://192.168.43.57:8080/rest-api/wpu-rest-server/api/";
+            ApiClient.BASE_URL = "http://192.168.43.57/rest-api/wpu-rest-server/api/";
         }
 
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
