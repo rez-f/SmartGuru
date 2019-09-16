@@ -8,8 +8,6 @@
     android:padding="20dp"
     tools:context=".HomeActivity">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
