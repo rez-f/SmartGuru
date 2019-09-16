@@ -22,11 +22,15 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawer;
     List dataList;
     NavigationView navigationView;
+    SharedPrefManager sharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPrefManager = new SharedPrefManager(this);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0);
@@ -73,14 +77,14 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+        if (id == R.id.action_logout) {
+            Toast.makeText(this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
+            sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_LOGGED_IN, false);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.

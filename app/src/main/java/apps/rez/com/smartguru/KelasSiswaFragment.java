@@ -20,8 +20,9 @@ import apps.rez.com.smartguru.Adapter.SiswaAdapter;
 import apps.rez.com.smartguru.Model.DataSiswa;
 import apps.rez.com.smartguru.Model.Siswa;
 import apps.rez.com.smartguru.Model.SiswaItem;
-import apps.rez.com.smartguru.Rest.ApiClient;
-import apps.rez.com.smartguru.Rest.ApiInterface;
+import apps.rez.com.smartguru.Rest.RetrofitClient;
+import apps.rez.com.smartguru.Rest.BaseApiService;
+import apps.rez.com.smartguru.Rest.UtilsApi;
 import apps.rez.com.smartguru.listener.ItemClickSupport;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,7 +34,7 @@ import retrofit2.Response;
  */
 public class KelasSiswaFragment extends Fragment {
 
-    ApiInterface mApiInterface;
+    BaseApiService mApiService;
     List dataList;
 
     private RecyclerView mRecyclerView;
@@ -49,13 +50,11 @@ public class KelasSiswaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_kelas_siswa, container, false);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerSiswa);
+        mRecyclerView = view.findViewById(R.id.recyclerSiswa);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-//        mRecyclerView.setAdapter(new SiswaAdapter(dataList));
-//        ApiClient.BASE_URL = "http://192.168.100.14:8080/rest-api/wpu-rest-server/api/";
-        ApiClient.BASE_URL = "http://192.168.43.57:8080/rest-api/wpu-rest-server/api/";
-        mApiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
 
         refresh();
 
@@ -69,7 +68,7 @@ public class KelasSiswaFragment extends Fragment {
 
     public void refresh() {
         final List list = new ArrayList();
-        Call<DataSiswa> siswaCall = mApiInterface.getSiswa();
+        Call<DataSiswa> siswaCall = mApiService.getSiswa();
         siswaCall.enqueue(new Callback<DataSiswa>() {
 
             @Override

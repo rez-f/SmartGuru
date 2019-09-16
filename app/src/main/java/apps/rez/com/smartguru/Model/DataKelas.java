@@ -1,7 +1,8 @@
 package apps.rez.com.smartguru.Model;
 
 import java.util.List;
-import javax.annotation.Generated;;
+
+import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
@@ -33,8 +34,8 @@ public class DataKelas{
  	public String toString(){
 		return 
 			"DataKelas{" +
-			"data = '" + data + '\'' + 
-			",status = '" + status + '\'' + 
+					"status = '" + status + '\'' +
+					",data = '" + data + '\'' +
 			"}";
 		}
 }

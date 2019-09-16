@@ -6,8 +6,8 @@ import com.google.gson.annotations.SerializedName;
 @Generated("com.robohorse.robopojogenerator")
 public class KelasItem {
 
-	@SerializedName("kelas")
-	private String kelas;
+    @SerializedName("nama_kelas")
+    private String nama_kelas;
 
 	@SerializedName("id")
 	private String id;
@@ -16,11 +16,11 @@ public class KelasItem {
 	private String mataPelajaran;
 
 	public void setKelas(String kelas){
-		this.kelas = kelas;
+        this.nama_kelas = kelas;
 	}
 
 	public String getKelas(){
-		return kelas;
+        return nama_kelas;
 	}
 
 	public void setId(String id){
@@ -44,8 +44,8 @@ public class KelasItem {
 		return 
 			"KelasItem{" +
 			"id = '" + id + '\'' +
-			",kelas = '" + kelas + '\'' +
-			",mata_pelajaran = '" + mataPelajaran + '\'' + 
+                    ",nama_kelas = '" + nama_kelas + '\'' +
+                    ",MATA_PELAJARAN = '" + mataPelajaran + '\'' +
 			"}";
 		}
 }

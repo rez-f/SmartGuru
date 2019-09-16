@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,8 +25,9 @@ import apps.rez.com.smartguru.Adapter.KelasAdapter;
 import apps.rez.com.smartguru.Model.DataKelas;
 import apps.rez.com.smartguru.Model.Kelas;
 import apps.rez.com.smartguru.Model.KelasItem;
-import apps.rez.com.smartguru.Rest.ApiClient;
-import apps.rez.com.smartguru.Rest.ApiInterface;
+import apps.rez.com.smartguru.Rest.RetrofitClient;
+import apps.rez.com.smartguru.Rest.BaseApiService;
+import apps.rez.com.smartguru.Rest.UtilsApi;
 import apps.rez.com.smartguru.listener.ItemClickSupport;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,14 +39,16 @@ import retrofit2.Response;
 
 public class HomeActivity extends MainActivity {
 
-    ApiInterface mApiInterface;
+    BaseApiService mApiService;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
     private CardView cardView;
-    private StringBuilder text;
+    private StringBuilder textUrl;
+
+    SharedPrefManager sharedPrefManager;
     private boolean fileServerExist;
 
     @Override
@@ -55,6 +57,8 @@ public class HomeActivity extends MainActivity {
 
         View view = LayoutInflater.from(this).inflate(R.layout.activity_home, null, false);
         drawer.addView(view, 0);
+
+        sharedPrefManager = new SharedPrefManager(this);
 
         /*
         cardView = (CardView) findViewById(R.id.cardViewTambah);
@@ -68,7 +72,8 @@ public class HomeActivity extends MainActivity {
             }
         });
         */
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerKelas);
+
+        mRecyclerView = findViewById(R.id.recyclerKelas);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -90,25 +95,24 @@ public class HomeActivity extends MainActivity {
         getServerIpFromFile();
 
         if (fileServerExist) {
-            ApiClient.BASE_URL = "" + text;
-        } else {
-            ApiClient.BASE_URL = "http://192.168.43.57/rest-api/wpu-rest-server/api/";
+            UtilsApi.BASE_URL_API = "" + textUrl;
         }
 
-        mApiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
         refresh();
     }
 
     private void refresh() {
         final List list = new ArrayList();
-        Call<DataKelas> kelasCall = mApiInterface.getKelas();
-        kelasCall.enqueue(new Callback<DataKelas>() {
+
+        mApiService.getKelas(sharedPrefManager.getSPid()).enqueue(new Callback<DataKelas>() {
+            Response<DataKelas> response;
 
             @Override
             public void onResponse(Call<DataKelas> call, final Response<DataKelas> response) {
                 final DataKelas KelasList = response.body();
 
-                if (response.body() != null){
+                if (response.body() != null) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(response.body());
                     }
@@ -124,7 +128,7 @@ public class HomeActivity extends MainActivity {
                             tampilKelasDetail(response.body().getData().get(position));
                         }
                     });
-                }else{
+                } else {
                     Toast.makeText(HomeActivity.this, "Tidak ada respon server", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -137,7 +141,6 @@ public class HomeActivity extends MainActivity {
             }
         });
     }
-
     private void tampilKelasDetail(KelasItem dataKelas) {
         Kelas kelas = new Kelas();
         kelas.setKelas(dataKelas.getKelas());
@@ -153,20 +156,19 @@ public class HomeActivity extends MainActivity {
         //Get the text file
         File file = new File(sdcard, "server.txt");
 
-        text = new StringBuilder();
+        textUrl = new StringBuilder();
 
         //Read text from file
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
             while ((line = br.readLine()) != null) {
-                text.append(line);
+                textUrl.append(line);
             }
             fileServerExist = true;
             br.close();
         } catch (IOException e) {
             //You'll need to add proper error handling here
-            Toast.makeText(this, "File Tidak ada", Toast.LENGTH_LONG).show();
             fileServerExist = false;
         }
     }

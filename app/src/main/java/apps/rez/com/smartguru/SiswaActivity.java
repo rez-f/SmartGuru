@@ -16,8 +16,9 @@ import java.util.List;
 
 import apps.rez.com.smartguru.Adapter.SiswaAdapter;
 import apps.rez.com.smartguru.Model.DataSiswa;
-import apps.rez.com.smartguru.Rest.ApiClient;
-import apps.rez.com.smartguru.Rest.ApiInterface;
+import apps.rez.com.smartguru.Rest.RetrofitClient;
+import apps.rez.com.smartguru.Rest.BaseApiService;
+import apps.rez.com.smartguru.Rest.UtilsApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 
 public class SiswaActivity extends MainActivity {
 
-    ApiInterface mApiInterface;
+    BaseApiService mApiService;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -45,7 +46,7 @@ public class SiswaActivity extends MainActivity {
 
         setTitle("Daftar Siswa");
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerSiswa);
+        mRecyclerView = findViewById(R.id.recyclerSiswa);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,ConstraintLayout.LayoutParams.MATCH_PARENT));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -69,9 +70,8 @@ public class SiswaActivity extends MainActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(new SiswaAdapter(dataList));
-//        ApiClient.BASE_URL = "http://192.168.100.14:8080/rest-api/wpu-rest-server/api/";
-        ApiClient.BASE_URL = "http://192.168.43.57:8080/rest-api/wpu-rest-server/api/";
-        mApiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
 
         sa = this;
         refresh();
@@ -79,7 +79,7 @@ public class SiswaActivity extends MainActivity {
 
     public void refresh() {
         final List list = new ArrayList();
-        Call <DataSiswa> siswaCall = mApiInterface.getSiswa();
+        Call<DataSiswa> siswaCall = mApiService.getSiswa();
         siswaCall.enqueue(new Callback <DataSiswa>() {
 
             @Override
@@ -95,7 +95,6 @@ public class SiswaActivity extends MainActivity {
                 }else{
                     Toast.makeText(SiswaActivity.this, "Tidak ada respon server", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
