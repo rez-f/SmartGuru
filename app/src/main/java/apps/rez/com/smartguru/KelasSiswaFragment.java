@@ -17,10 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import apps.rez.com.smartguru.Adapter.SiswaAdapter;
-import apps.rez.com.smartguru.Model.DataSiswa;
 import apps.rez.com.smartguru.Model.Siswa;
-import apps.rez.com.smartguru.Model.SiswaItem;
-import apps.rez.com.smartguru.Rest.RetrofitClient;
+import apps.rez.com.smartguru.Models.NamaSiswa;
+import apps.rez.com.smartguru.Models.NamaSiswaItem;
 import apps.rez.com.smartguru.Rest.BaseApiService;
 import apps.rez.com.smartguru.Rest.UtilsApi;
 import apps.rez.com.smartguru.listener.ItemClickSupport;
@@ -36,6 +35,8 @@ public class KelasSiswaFragment extends Fragment {
 
     BaseApiService mApiService;
     List dataList;
+
+    SharedPrefManager sharedPrefManager;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -54,9 +55,11 @@ public class KelasSiswaFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        sharedPrefManager = new SharedPrefManager(container.getContext());
+
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
 
-        refresh();
+        getSiswaList();
 
         return view;
     }
@@ -66,21 +69,20 @@ public class KelasSiswaFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public void refresh() {
+    public void getSiswaList() {
         final List list = new ArrayList();
-        Call<DataSiswa> siswaCall = mApiService.getSiswa();
-        siswaCall.enqueue(new Callback<DataSiswa>() {
 
+        mApiService.getSiswa(sharedPrefManager.getSPid()).enqueue(new Callback<NamaSiswa>() {
             @Override
-            public void onResponse(Call<DataSiswa> call, final Response<DataSiswa> response) {
-                DataSiswa dataSiswaList = response.body();
+            public void onResponse(Call<NamaSiswa> call, final Response<NamaSiswa> response) {
+                NamaSiswa dataSiswaList = response.body();
 
                 if (response.body() != null){
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(response.body());
                     }
                     Log.d("Retrofit Get","Code : "+response.code());
-                    Log.d("Retrofit Get", "Jumlah data Siswa : " + response.body().getData().get(0).getNama());
+                    Log.d("Retrofit Get", "Jumlah data Siswa : " + response.body().getData().get(0).getNAMA());
                     Log.d("Retrofit Get", "Jumlah data Siswa : " + response.body().toString());
                     mAdapter = new SiswaAdapter(list);
                     mRecyclerView.setAdapter(mAdapter);
@@ -98,7 +100,7 @@ public class KelasSiswaFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<DataSiswa> call, Throwable t) {
+            public void onFailure(Call<apps.rez.com.smartguru.Models.NamaSiswa> call, Throwable t) {
                 Toast.makeText(getActivity(), "Request Gagal", Toast.LENGTH_LONG).show();
                 Log.e("Retrofit Get", t.toString());
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_LONG).show();
@@ -106,9 +108,9 @@ public class KelasSiswaFragment extends Fragment {
         });
     }
 
-    private void tampilSiswaDetail(SiswaItem siswaItem) {
+    private void tampilSiswaDetail(NamaSiswaItem siswaItem) {
         Siswa siswa = new Siswa();
-        siswa.setNama(siswaItem.getNama());
+        siswa.setNama(siswaItem.getNAMA());
 
         Intent intent = new Intent(getActivity(), SiswaDetailActivity.class);
         intent.putExtra(SiswaDetailActivity.EXTRAS_SISWA, siswa);

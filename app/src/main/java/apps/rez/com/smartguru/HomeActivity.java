@@ -25,7 +25,6 @@ import apps.rez.com.smartguru.Adapter.KelasAdapter;
 import apps.rez.com.smartguru.Models.DataKelas;
 import apps.rez.com.smartguru.Model.Kelas;
 import apps.rez.com.smartguru.Models.KelasItem;
-import apps.rez.com.smartguru.Rest.RetrofitClient;
 import apps.rez.com.smartguru.Rest.BaseApiService;
 import apps.rez.com.smartguru.Rest.UtilsApi;
 import apps.rez.com.smartguru.listener.ItemClickSupport;
@@ -97,17 +96,15 @@ public class HomeActivity extends MainActivity {
         if (fileServerExist) {
             UtilsApi.BASE_URL_API = "" + textUrl;
         }
-
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
-        refresh();
+
+        getKelasList();
     }
 
-    private void refresh() {
+    private void getKelasList() {
         final List list = new ArrayList();
 
         mApiService.getKelas(sharedPrefManager.getSPid()).enqueue(new Callback<DataKelas>() {
-            Response<DataKelas> response;
-
             @Override
             public void onResponse(Call<DataKelas> call, final Response<DataKelas> response) {
                 final DataKelas KelasList = response.body();

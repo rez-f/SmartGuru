@@ -1,6 +1,7 @@
 package apps.rez.com.smartguru;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -11,12 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import apps.rez.com.smartguru.Adapter.SiswaAdapter;
-import apps.rez.com.smartguru.Model.DataSiswa;
-import apps.rez.com.smartguru.Rest.RetrofitClient;
+import apps.rez.com.smartguru.Models.NamaSiswa;
 import apps.rez.com.smartguru.Rest.BaseApiService;
 import apps.rez.com.smartguru.Rest.UtilsApi;
 import retrofit2.Call;
@@ -35,7 +39,9 @@ public class SiswaActivity extends MainActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
-    public static SiswaActivity sa;
+
+    private StringBuilder textUrl;
+    private boolean fileServerExist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,20 +77,23 @@ public class SiswaActivity extends MainActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(new SiswaAdapter(dataList));
 
+        getServerIpFromFile();
+
+        if(fileServerExist){
+            UtilsApi.BASE_URL_API = "" + textUrl;
+        }
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
 
-        sa = this;
-        refresh();
+        getSiswaList();
     }
 
-    public void refresh() {
+    public void getSiswaList() {
         final List list = new ArrayList();
-        Call<DataSiswa> siswaCall = mApiService.getSiswa();
-        siswaCall.enqueue(new Callback <DataSiswa>() {
 
+        mApiService.getSiswa(sharedPrefManager.getSPid()).enqueue(new Callback<NamaSiswa>() {
             @Override
-            public void onResponse(Call<DataSiswa> call, Response<DataSiswa> response) {
-                DataSiswa dataSiswaList = response.body();
+            public void onResponse(Call<NamaSiswa> call, Response<NamaSiswa> response) {
+                NamaSiswa dataSiswaList = response.body();
                 if (response.body() != null){
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(response.body());
@@ -98,11 +107,34 @@ public class SiswaActivity extends MainActivity {
             }
 
             @Override
-            public void onFailure(Call<DataSiswa> call, Throwable t) {
+            public void onFailure(Call<NamaSiswa> call, Throwable t) {
                 Log.e("Retrofit Get", t.toString());
                 Toast.makeText(SiswaActivity.this, "Request Gagal", Toast.LENGTH_LONG).show();
                 Toast.makeText(SiswaActivity.this, t.toString(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void getServerIpFromFile() {
+        File sdcard = Environment.getExternalStorageDirectory();
+
+        //Get the text file
+        File file = new File(sdcard, "server.txt");
+
+        textUrl = new StringBuilder();
+
+        //Read text from file
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = br.readLine()) != null) {
+                textUrl.append(line);
+            }
+            fileServerExist = true;
+            br.close();
+        } catch (IOException e) {
+            //You'll need to add proper error handling here
+            fileServerExist = false;
+        }
     }
 }

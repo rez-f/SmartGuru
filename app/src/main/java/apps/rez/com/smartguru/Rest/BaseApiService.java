@@ -3,7 +3,7 @@ package apps.rez.com.smartguru.Rest;
 import java.util.List;
 
 import apps.rez.com.smartguru.Models.DataKelas;
-import apps.rez.com.smartguru.Model.DataSiswa;
+import apps.rez.com.smartguru.Models.NamaSiswa;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -21,6 +21,6 @@ public interface BaseApiService {
     @GET("kelas/id")
     Call<DataKelas> getKelas(@Query("id") int id);
 
-    @GET("siswa")
-    Call<DataSiswa> getSiswa();
+    @GET("siswa/id")
+    Call<NamaSiswa> getSiswa(@Query("id") int id);
 }
