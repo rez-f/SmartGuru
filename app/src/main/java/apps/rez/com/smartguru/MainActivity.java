@@ -11,6 +11,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity
     List dataList;
     NavigationView navigationView;
     SharedPrefManager sharedPrefManager;
+    TextView userName, userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +33,28 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         sharedPrefManager = new SharedPrefManager(this);
-
+        navigationView = findViewById(R.id.nav_view);
+        drawer = findViewById(R.id.drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+        dataList = new ArrayList();
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(0);
         setTitle("Daftar Kelas");
 
-        drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        dataList = new ArrayList();
+        View headerView = navigationView.getHeaderView(0);
+        userName = headerView.findViewById(R.id.tvUserName);
+        userEmail = headerView.findViewById(R.id.tvUserEmail);
 
-        navigationView = findViewById(R.id.nav_view);
+        userName.setText(sharedPrefManager.getSpNama());
+        userEmail.setText(sharedPrefManager.getSpEmail());
+
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
         navigationView.getMenu().getItem(1).setChecked(false);

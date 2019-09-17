@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import apps.rez.com.smartguru.Model.DataKelas;
+import apps.rez.com.smartguru.Models.DataKelas;
 import apps.rez.com.smartguru.R;
 
 /**
@@ -32,8 +32,8 @@ public class KelasAdapter extends RecyclerView.Adapter<KelasAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder (MyViewHolder holder,final int position){
-        holder.mTextViewKelas.setText(mKelasList.get(position).getData().get(position).getKelas());
-        holder.mTextViewMataPelajaran.setText(mKelasList.get(position).getData().get(position).getMataPelajaran());
+        holder.mTextViewKelas.setText(mKelasList.get(position).getData().get(position).getNamaKelas());
+        holder.mTextViewMataPelajaran.setText(mKelasList.get(position).getData().get(position).getMATAPELAJARAN());
     }
 
     @Override

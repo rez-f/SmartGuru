@@ -2,7 +2,7 @@ package apps.rez.com.smartguru.Rest;
 
 import java.util.List;
 
-import apps.rez.com.smartguru.Model.DataKelas;
+import apps.rez.com.smartguru.Models.DataKelas;
 import apps.rez.com.smartguru.Model.DataSiswa;
 import okhttp3.ResponseBody;
 import retrofit2.Call;

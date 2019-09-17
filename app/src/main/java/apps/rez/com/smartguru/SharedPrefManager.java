@@ -5,8 +5,11 @@ import android.content.SharedPreferences;
 
 public class SharedPrefManager {
     public static final String SP_SMARTGURU_APP = "spSmartGuruApp";
-    public static final String SP_ID = "spID";
     public static final String SP_LOGGED_IN = "spLoggedIn";
+    public static final String SP_ID = "spID";
+    public static final String SP_NAMA = "spNama";
+    public static final String SP_NIP = "spNip";
+    public static final String SP_EMAIL = "spEmail";
 
     SharedPreferences sp;
     SharedPreferences.Editor spEditor;
@@ -29,6 +32,18 @@ public class SharedPrefManager {
     public void saveSPBoolean(String keySP, boolean value) {
         spEditor.putBoolean(keySP, value);
         spEditor.commit();
+    }
+
+    public String getSpNama() {
+        return sp.getString(SP_NAMA,"NAMA");
+    }
+
+    public String getSpNip() {
+        return sp.getString(SP_NIP,"NIP");
+    }
+
+    public String getSpEmail() {
+        return sp.getString(SP_EMAIL,"EMAIL");
     }
 
     public int getSPid() {

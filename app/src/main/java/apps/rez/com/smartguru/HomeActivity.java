@@ -22,9 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import apps.rez.com.smartguru.Adapter.KelasAdapter;
-import apps.rez.com.smartguru.Model.DataKelas;
+import apps.rez.com.smartguru.Models.DataKelas;
 import apps.rez.com.smartguru.Model.Kelas;
-import apps.rez.com.smartguru.Model.KelasItem;
+import apps.rez.com.smartguru.Models.KelasItem;
 import apps.rez.com.smartguru.Rest.RetrofitClient;
 import apps.rez.com.smartguru.Rest.BaseApiService;
 import apps.rez.com.smartguru.Rest.UtilsApi;
@@ -143,8 +143,8 @@ public class HomeActivity extends MainActivity {
     }
     private void tampilKelasDetail(KelasItem dataKelas) {
         Kelas kelas = new Kelas();
-        kelas.setKelas(dataKelas.getKelas());
-        kelas.setMataPelajaran(dataKelas.getMataPelajaran());
+        kelas.setKelas(dataKelas.getNamaKelas());
+        kelas.setMataPelajaran(dataKelas.getMATAPELAJARAN());
         Intent intent = new Intent(HomeActivity.this, KelasDetailActivity.class);
         intent.putExtra(KelasDetailActivity.EXTRAS_KELAS, kelas);
         startActivity(intent);
