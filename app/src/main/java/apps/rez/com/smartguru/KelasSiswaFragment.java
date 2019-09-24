@@ -16,8 +16,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import apps.rez.com.smartguru.Adapter.DataSiswaAdapter;
 import apps.rez.com.smartguru.Adapter.SiswaAdapter;
 import apps.rez.com.smartguru.Model.Siswa;
+import apps.rez.com.smartguru.Models.DataSiswa;
+import apps.rez.com.smartguru.Models.DataSiswaItem;
 import apps.rez.com.smartguru.Models.NamaSiswa;
 import apps.rez.com.smartguru.Models.NamaSiswaItem;
 import apps.rez.com.smartguru.Rest.BaseApiService;
@@ -38,6 +41,8 @@ public class KelasSiswaFragment extends Fragment {
 
     SharedPrefManager sharedPrefManager;
 
+    private String ID_KELAS;
+
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -57,6 +62,8 @@ public class KelasSiswaFragment extends Fragment {
 
         sharedPrefManager = new SharedPrefManager(container.getContext());
 
+        ID_KELAS = getArguments().getString("ID_KELAS");
+
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
 
         getSiswaList();
@@ -72,10 +79,10 @@ public class KelasSiswaFragment extends Fragment {
     public void getSiswaList() {
         final List list = new ArrayList();
 
-        mApiService.getSiswa(sharedPrefManager.getSPid()).enqueue(new Callback<NamaSiswa>() {
+        mApiService.getSiswaKelas(Integer.parseInt(ID_KELAS)).enqueue(new Callback<DataSiswa>() {
             @Override
-            public void onResponse(Call<NamaSiswa> call, final Response<NamaSiswa> response) {
-                NamaSiswa dataSiswaList = response.body();
+            public void onResponse(Call<DataSiswa> call, final Response<DataSiswa> response) {
+                DataSiswa dataSiswaList = response.body();
 
                 if (response.body() != null){
                     for (int i = 0; i < response.body().getData().size(); i++) {
@@ -84,7 +91,7 @@ public class KelasSiswaFragment extends Fragment {
                     Log.d("Retrofit Get","Code : "+response.code());
                     Log.d("Retrofit Get", "Jumlah data Siswa : " + response.body().getData().get(0).getNAMA());
                     Log.d("Retrofit Get", "Jumlah data Siswa : " + response.body().toString());
-                    mAdapter = new SiswaAdapter(list);
+                    mAdapter = new DataSiswaAdapter(list);
                     mRecyclerView.setAdapter(mAdapter);
 
                     ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -100,7 +107,7 @@ public class KelasSiswaFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<apps.rez.com.smartguru.Models.NamaSiswa> call, Throwable t) {
+            public void onFailure(Call<DataSiswa> call, Throwable t) {
                 Toast.makeText(getActivity(), "Request Gagal", Toast.LENGTH_LONG).show();
                 Log.e("Retrofit Get", t.toString());
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_LONG).show();
@@ -108,9 +115,22 @@ public class KelasSiswaFragment extends Fragment {
         });
     }
 
-    private void tampilSiswaDetail(NamaSiswaItem siswaItem) {
+    private void tampilSiswaDetail(DataSiswaItem siswaItem) {
         Siswa siswa = new Siswa();
+
         siswa.setNama(siswaItem.getNAMA());
+        siswa.setNis(siswaItem.getNIS());
+        siswa.setNisn(siswaItem.getNISN());
+        siswa.setTempatLahir(siswaItem.getTEMPATLAHIR());
+        siswa.setTanggalLahir(siswaItem.getTANGGALLAHIR());
+        siswa.setJenisKelamin(siswaItem.getJENISKELAMIN());
+        siswa.setAgama(siswaItem.getAGAMA());
+        siswa.setAlamat(siswaItem.getALAMAT());
+        siswa.setNamaAyah(siswaItem.getNAMAAYAH());
+        siswa.setPekerjaanAyah(siswaItem.getPEKERJAANAYAH());
+        siswa.setNamaIbu(siswaItem.getNAMAIBU());
+        siswa.setPekerjaanIbu(siswaItem.getPEKERJAANIBU());
+        siswa.setAlamatAyah(siswaItem.getALAMATORTUJALAN());
 
         Intent intent = new Intent(getActivity(), SiswaDetailActivity.class);
         intent.putExtra(SiswaDetailActivity.EXTRAS_SISWA, siswa);

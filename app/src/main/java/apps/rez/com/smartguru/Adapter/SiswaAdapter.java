@@ -33,7 +33,7 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.MyViewHolder
     private int[] green = {81,175,67,30,39,58,188,152,195,235,220,150,193,87,169};
     private int[] blue = {181,80,54,99,176,183,212,0,74,59,57,243,7,34,244};
     private int index = 0;
-    Random random;
+    private Random random;
 
     public SiswaAdapter(List<NamaSiswa> SiswaList) {
         mSiswaList = SiswaList;
@@ -81,11 +81,11 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.MyViewHolder
         return mSiswaList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView mTextViewNamaSiswa,mTextViewJenisKelaminSiswa,mTextViewKelasSiswa;
-        public ImageView mImageViewLetter;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView mTextViewNamaSiswa, mTextViewJenisKelaminSiswa, mTextViewKelasSiswa;
+        ImageView mImageViewLetter;
 
-        public MyViewHolder(View itemView) {
+        MyViewHolder(View itemView) {
             super(itemView);
             mImageViewLetter = (ImageView) itemView.findViewById(R.id.ivLetter);
             mTextViewNamaSiswa = (TextView) itemView.findViewById(R.id.tvNamaSiswa);

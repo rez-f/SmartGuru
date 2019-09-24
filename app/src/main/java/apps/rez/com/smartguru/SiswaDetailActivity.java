@@ -11,6 +11,7 @@ public class SiswaDetailActivity extends AppCompatActivity {
 
     public static final String EXTRAS_SISWA = "siswa";
     private Bundle bundle;
+    private Siswa siswa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +23,24 @@ public class SiswaDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         bundle = new Bundle();
-
-        Siswa siswa = getIntent().getParcelableExtra(EXTRAS_SISWA);
+        siswa = getIntent().getParcelableExtra(EXTRAS_SISWA);
 
         if (siswa != null){
             getSupportActionBar().setTitle(siswa.getNama());
-            bundle.putString("nama",siswa.getNama());
+
+            bundle.putString("NAMA_SISWA", siswa.getNama());
+            bundle.putString("NIS_SISWA", siswa.getNis());
+            bundle.putString("NISN_SISWA", siswa.getNisn());
+            bundle.putString("TEMPAT_LAHIR_SISWA", siswa.getTempatLahir());
+            bundle.putString("TANGGAL_LAHIR_SISWA", siswa.getTanggalLahir());
+            bundle.putString("JENIS_KELAMIN_SISWA", siswa.getJenisKelamin());
+            bundle.putString("AGAMA_SISWA", siswa.getAgama());
+            bundle.putString("ALAMAT_SISWA", siswa.getAlamat());
+            bundle.putString("NAMA_AYAH_SISWA", siswa.getNamaAyah());
+            bundle.putString("PEKERJAAN_AYAH_SISWA", siswa.getPekerjaanAyah());
+            bundle.putString("NAMA_IBU_SISWA", siswa.getNamaIbu());
+            bundle.putString("PEKERJAAN_IBU_SISWA", siswa.getPekerjaanIbu());
+            bundle.putString("ALAMAT_AYAH_SISWA", siswa.getAlamatAyah());
         }
 
         FragmentManager mFragmentManager = getSupportFragmentManager();

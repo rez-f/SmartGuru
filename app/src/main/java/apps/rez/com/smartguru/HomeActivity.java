@@ -140,8 +140,11 @@ public class HomeActivity extends MainActivity {
     }
     private void tampilKelasDetail(KelasItem dataKelas) {
         Kelas kelas = new Kelas();
+
+        kelas.setId(Integer.parseInt(dataKelas.getIdKelas()));
         kelas.setKelas(dataKelas.getNamaKelas());
         kelas.setMataPelajaran(dataKelas.getMATAPELAJARAN());
+
         Intent intent = new Intent(HomeActivity.this, KelasDetailActivity.class);
         intent.putExtra(KelasDetailActivity.EXTRAS_KELAS, kelas);
         startActivity(intent);

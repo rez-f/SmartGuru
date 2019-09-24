@@ -20,6 +20,9 @@ public class KelasDetailActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    private Kelas kelas;
+    private Bundle bundle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +33,14 @@ public class KelasDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        Kelas kelas = getIntent().getParcelableExtra(EXTRAS_KELAS);
+        bundle = new Bundle();
+
+        kelas = getIntent().getParcelableExtra(EXTRAS_KELAS);
+
         if (kelas != null){
-            getSupportActionBar().setTitle(kelas.getKelas());
+//            getSupportActionBar().setTitle("Kelas "+kelas.getKelas());
+            getSupportActionBar().setTitle(getString(R.string.title_activity_kelas_detail, kelas.getKelas()));
+            bundle.putString("ID_KELAS", String.valueOf(kelas.getId()));
         }
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -50,8 +58,11 @@ public class KelasDetailActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        KelasSiswaFragment kelasSiswaFragment = new KelasSiswaFragment();
+        kelasSiswaFragment.setArguments(bundle);
+
         adapter.addFragment(new KelasHomeFragment(), "Home");
-        adapter.addFragment(new KelasSiswaFragment(), "Siswa");
+        adapter.addFragment(kelasSiswaFragment, "Siswa");
         adapter.addFragment(new KelasBerkasFragment(), "Berkas");
         viewPager.setAdapter(adapter);
     }

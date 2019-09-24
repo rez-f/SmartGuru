@@ -25,6 +25,8 @@ public class SiswaDetailFragment extends Fragment implements View.OnClickListene
     private FragmentActivity myContext;
     private FragmentManager fragmentManager;
 
+    private Bundle bundle;
+
     public SiswaDetailFragment() {
         // Required empty public constructor
     }
@@ -35,6 +37,24 @@ public class SiswaDetailFragment extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_siswa_detail, container, false);
+
+        bundle = new Bundle();
+
+        assert getArguments() != null;
+        bundle.putString("NAMA_SISWA", getArguments().getString("NAMA_SISWA"));
+        bundle.putString("NIS_SISWA", getArguments().getString("NIS_SISWA"));
+        bundle.putString("NISN_SISWA", getArguments().getString("NISN_SISWA"));
+        bundle.putString("TEMPAT_LAHIR_SISWA", getArguments().getString("TEMPAT_LAHIR_SISWA"));
+        bundle.putString("TANGGAL_LAHIR_SISWA", getArguments().getString("TANGGAL_LAHIR_SISWA"));
+        bundle.putString("JENIS_KELAMIN_SISWA", getArguments().getString("JENIS_KELAMIN_SISWA"));
+        bundle.putString("AGAMA_SISWA", getArguments().getString("AGAMA_SISWA"));
+        bundle.putString("ALAMAT_SISWA", getArguments().getString("ALAMAT_SISWA"));
+        bundle.putString("NAMA_AYAH_SISWA", getArguments().getString("NAMA_AYAH_SISWA"));
+        bundle.putString("PEKERJAAN_AYAH_SISWA", getArguments().getString("PEKERJAAN_AYAH_SISWA"));
+        bundle.putString("NAMA_IBU_SISWA", getArguments().getString("NAMA_IBU_SISWA"));
+        bundle.putString("PEKERJAAN_IBU_SISWA", getArguments().getString("PEKERJAAN_IBU_SISWA"));
+        bundle.putString("ALAMAT_AYAH_SISWA", getArguments().getString("ALAMAT_AYAH_SISWA"));
+
         biodata = view.findViewById(R.id.cvBioSiswa);
         pengetahuan = view.findViewById(R.id.cvNilaiPengetahuanSiswa);
         keterampilan = view.findViewById(R.id.cvNilaiKeterampilanSiswa);
@@ -65,6 +85,9 @@ public class SiswaDetailFragment extends Fragment implements View.OnClickListene
         if (view.getId() == R.id.cvBioSiswa) {
             BiodataSiswaModalFragment biodataSiswaModalFragment = new BiodataSiswaModalFragment();
             fragmentManager = myContext.getSupportFragmentManager();
+
+            biodataSiswaModalFragment.setArguments(bundle);
+
             biodataSiswaModalFragment.show(fragmentManager,"Fragment Biodata Siswa");
         }else if(view.getId() == R.id.cvNilaiPengetahuanSiswa){
             NilaiPengetahuanSiswaModalFragment nilaiPengetahuanSiswaModalFragment = new NilaiPengetahuanSiswaModalFragment();
