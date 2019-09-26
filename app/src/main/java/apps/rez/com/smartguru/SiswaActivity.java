@@ -1,5 +1,6 @@
 package apps.rez.com.smartguru;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -20,9 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import apps.rez.com.smartguru.Adapter.SiswaAdapter;
-import apps.rez.com.smartguru.Models.NamaSiswa;
+import apps.rez.com.smartguru.Models.Siswa;
+import apps.rez.com.smartguru.Models.DataSiswa;
+import apps.rez.com.smartguru.Models.DataSiswaItem;
 import apps.rez.com.smartguru.Rest.BaseApiService;
 import apps.rez.com.smartguru.Rest.UtilsApi;
+import apps.rez.com.smartguru.listener.ItemClickSupport;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -90,10 +94,10 @@ public class SiswaActivity extends MainActivity {
     public void getSiswaList() {
         final List list = new ArrayList();
 
-        mApiService.getSiswa(sharedPrefManager.getSPid()).enqueue(new Callback<NamaSiswa>() {
+        mApiService.getSiswa(sharedPrefManager.getSPid()).enqueue(new Callback<DataSiswa>() {
             @Override
-            public void onResponse(Call<NamaSiswa> call, Response<NamaSiswa> response) {
-                NamaSiswa dataSiswaList = response.body();
+            public void onResponse(Call<DataSiswa> call, final Response<DataSiswa> response) {
+//                DataSiswaKelas dataSiswaList = response.body();
                 if (response.body() != null){
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(response.body());
@@ -101,13 +105,22 @@ public class SiswaActivity extends MainActivity {
                     mAdapter = new SiswaAdapter(list);
                     mRecyclerView.setAdapter(mAdapter);
                     swipeRefreshLayout.setEnabled(false);
+
+                    ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                        @Override
+                        public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+//                        Toast.makeText(getActivity(), ""+response.body().getData().get(position).getNama(), Toast.LENGTH_SHORT).show();
+                            tampilSiswaDetail(response.body().getData().get(position));
+                        }
+                    });
+
                 }else{
                     Toast.makeText(SiswaActivity.this, "Tidak ada respon server", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<NamaSiswa> call, Throwable t) {
+            public void onFailure(Call<DataSiswa> call, Throwable t) {
                 Log.e("Retrofit Get", t.toString());
                 Toast.makeText(SiswaActivity.this, "Request Gagal", Toast.LENGTH_LONG).show();
                 Toast.makeText(SiswaActivity.this, t.toString(), Toast.LENGTH_LONG).show();
@@ -136,5 +149,28 @@ public class SiswaActivity extends MainActivity {
             //You'll need to add proper error handling here
             fileServerExist = false;
         }
+    }
+
+    private void tampilSiswaDetail(DataSiswaItem siswaItem) {
+        Siswa siswa = new Siswa();
+
+        siswa.setNama(siswaItem.getNAMA());
+        siswa.setNis(siswaItem.getNIS());
+        siswa.setNisn(siswaItem.getNISN());
+        siswa.setTempatLahir(siswaItem.getTEMPATLAHIR());
+        siswa.setTanggalLahir(siswaItem.getTANGGALLAHIR());
+        siswa.setJenisKelamin(siswaItem.getJENISKELAMIN());
+        siswa.setAgama(siswaItem.getAGAMA());
+        siswa.setAlamat(siswaItem.getALAMAT());
+        siswa.setNamaAyah(siswaItem.getNAMAAYAH());
+        siswa.setPekerjaanAyah(siswaItem.getPEKERJAANAYAH());
+        siswa.setNamaIbu(siswaItem.getNAMAIBU());
+        siswa.setPekerjaanIbu(siswaItem.getPEKERJAANIBU());
+        siswa.setAlamatAyah(siswaItem.getALAMATORTUJALAN());
+
+        Intent intent = new Intent(this, SiswaDetailActivity.class);
+        intent.putExtra(SiswaDetailActivity.EXTRAS_SISWA, siswa);
+
+        startActivity(intent);
     }
 }

@@ -53,4 +53,9 @@ public class SharedPrefManager {
     public Boolean getSPLoggedIn() {
         return sp.getBoolean(SP_LOGGED_IN, false);
     }
+
+    public void clearSP(){
+        spEditor.clear();
+        spEditor.commit();
+    }
 }

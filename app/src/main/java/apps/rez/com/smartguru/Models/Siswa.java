@@ -1,4 +1,4 @@
-package apps.rez.com.smartguru.Model;
+package apps.rez.com.smartguru.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

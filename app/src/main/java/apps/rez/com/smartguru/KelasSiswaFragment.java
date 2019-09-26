@@ -17,12 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import apps.rez.com.smartguru.Adapter.DataSiswaAdapter;
-import apps.rez.com.smartguru.Adapter.SiswaAdapter;
-import apps.rez.com.smartguru.Model.Siswa;
-import apps.rez.com.smartguru.Models.DataSiswa;
-import apps.rez.com.smartguru.Models.DataSiswaItem;
-import apps.rez.com.smartguru.Models.NamaSiswa;
-import apps.rez.com.smartguru.Models.NamaSiswaItem;
+import apps.rez.com.smartguru.Models.Siswa;
+import apps.rez.com.smartguru.Models.DataSiswaKelas;
+import apps.rez.com.smartguru.Models.DataSiswaKelasItem;
 import apps.rez.com.smartguru.Rest.BaseApiService;
 import apps.rez.com.smartguru.Rest.UtilsApi;
 import apps.rez.com.smartguru.listener.ItemClickSupport;
@@ -79,10 +76,10 @@ public class KelasSiswaFragment extends Fragment {
     public void getSiswaList() {
         final List list = new ArrayList();
 
-        mApiService.getSiswaKelas(Integer.parseInt(ID_KELAS)).enqueue(new Callback<DataSiswa>() {
+        mApiService.getSiswaKelas(Integer.parseInt(ID_KELAS)).enqueue(new Callback<DataSiswaKelas>() {
             @Override
-            public void onResponse(Call<DataSiswa> call, final Response<DataSiswa> response) {
-                DataSiswa dataSiswaList = response.body();
+            public void onResponse(Call<DataSiswaKelas> call, final Response<DataSiswaKelas> response) {
+                DataSiswaKelas dataSiswaKelasList = response.body();
 
                 if (response.body() != null){
                     for (int i = 0; i < response.body().getData().size(); i++) {
@@ -107,7 +104,7 @@ public class KelasSiswaFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<DataSiswa> call, Throwable t) {
+            public void onFailure(Call<DataSiswaKelas> call, Throwable t) {
                 Toast.makeText(getActivity(), "Request Gagal", Toast.LENGTH_LONG).show();
                 Log.e("Retrofit Get", t.toString());
                 Toast.makeText(getActivity(), t.toString(), Toast.LENGTH_LONG).show();
@@ -115,7 +112,7 @@ public class KelasSiswaFragment extends Fragment {
         });
     }
 
-    private void tampilSiswaDetail(DataSiswaItem siswaItem) {
+    private void tampilSiswaDetail(DataSiswaKelasItem siswaItem) {
         Siswa siswa = new Siswa();
 
         siswa.setNama(siswaItem.getNAMA());

@@ -1,4 +1,4 @@
-package apps.rez.com.smartguru.Model;
+package apps.rez.com.smartguru.Models;
 
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;

@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import apps.rez.com.smartguru.Model.Siswa;
+import apps.rez.com.smartguru.Models.Siswa;
 
 public class SiswaDetailActivity extends AppCompatActivity {
 

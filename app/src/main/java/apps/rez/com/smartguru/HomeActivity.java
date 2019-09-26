@@ -23,7 +23,7 @@ import java.util.List;
 
 import apps.rez.com.smartguru.Adapter.KelasAdapter;
 import apps.rez.com.smartguru.Models.DataKelas;
-import apps.rez.com.smartguru.Model.Kelas;
+import apps.rez.com.smartguru.Models.Kelas;
 import apps.rez.com.smartguru.Models.KelasItem;
 import apps.rez.com.smartguru.Rest.BaseApiService;
 import apps.rez.com.smartguru.Rest.UtilsApi;
@@ -96,9 +96,15 @@ public class HomeActivity extends MainActivity {
         if (fileServerExist) {
             UtilsApi.BASE_URL_API = "" + textUrl;
         }
-        mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
 
-        getKelasList();
+        if(sharedPrefManager.getSPid() != 0){
+            mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
+            getKelasList();
+        }else{
+            swipeRefreshLayout.setEnabled(false);
+            Toast.makeText(this, "Tidak ada data untuk ditampilkan", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void getKelasList() {

@@ -14,8 +14,7 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import java.util.List;
 import java.util.Random;
 
-import apps.rez.com.smartguru.Models.DataSiswa;
-import apps.rez.com.smartguru.Models.NamaSiswa;
+import apps.rez.com.smartguru.Models.DataSiswaKelas;
 import apps.rez.com.smartguru.R;
 
 /**
@@ -24,7 +23,7 @@ import apps.rez.com.smartguru.R;
 
 public class DataSiswaAdapter extends RecyclerView.Adapter<DataSiswaAdapter.MyViewHolder> {
 
-    private List<DataSiswa> mSiswaList;
+    private List<DataSiswaKelas> mSiswaList;
     private TextDrawable mDrawable;
     private String mNama, mNIS;
     private int[] red = {63, 76, 244, 233, 156, 103, 0, 255, 139, 255, 205, 33, 255, 255,};
@@ -33,7 +32,7 @@ public class DataSiswaAdapter extends RecyclerView.Adapter<DataSiswaAdapter.MyVi
     private int index = 0;
     private Random random;
 
-    public DataSiswaAdapter(List<DataSiswa> SiswaList) {
+    public DataSiswaAdapter(List<DataSiswaKelas> SiswaList) {
         mSiswaList = SiswaList;
     }
 

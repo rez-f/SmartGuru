@@ -1,10 +1,8 @@
 package apps.rez.com.smartguru.Rest;
 
-import java.util.List;
-
 import apps.rez.com.smartguru.Models.DataKelas;
 import apps.rez.com.smartguru.Models.DataSiswa;
-import apps.rez.com.smartguru.Models.NamaSiswa;
+import apps.rez.com.smartguru.Models.DataSiswaKelas;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -23,8 +21,8 @@ public interface BaseApiService {
     Call<DataKelas> getKelas(@Query("id") int id);
 
     @GET("kelas/siswa/id")
-    Call<DataSiswa> getSiswaKelas(@Query("id") int id);
+    Call<DataSiswaKelas> getSiswaKelas(@Query("id") int id);
 
     @GET("siswa/id")
-    Call<NamaSiswa> getSiswa(@Query("id") int id);
+    Call<DataSiswa> getSiswa(@Query("id") int id);
 }

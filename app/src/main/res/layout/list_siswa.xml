@@ -34,17 +34,17 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvKelas"
+                android:id="@+id/tvNISSiswa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
-                android:text="Kelas XII IPA" />
+                android:text="1234" />
 
             <TextView
-                android:id="@+id/tvJenisKelamin"
+                android:id="@+id/tvKelasSiswa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Laki-laki"/>
+                android:text="Kelas XII IPA"/>
         </LinearLayout>
 
         <ImageView

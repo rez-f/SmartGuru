@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+//        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -88,9 +88,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            Toast.makeText(this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
-            sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_LOGGED_IN, false);
-            finish();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -113,6 +111,13 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().getItem(2);
             navigationView.setCheckedItem(R.id.drawer_item_profile);
             overridePendingTransition(0, 0);
+        } else if (id == R.id.drawer_item_logout){
+            Toast.makeText(this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
+            sharedPrefManager.clearSP();
+            sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_LOGGED_IN, false);
+            startActivity(new Intent(MainActivity.this, LoginActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -1,436 +1,507 @@
 package apps.rez.com.smartguru.Models;
 
 import javax.annotation.Generated;
-
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
 public class DataSiswaItem {
 
-    @SerializedName("JENIS_KELAMIN")
-    private String jENISKELAMIN;
+	@SerializedName("JENIS_KELAMIN")
+	private String jENISKELAMIN;
 
-    @SerializedName("PENDIDIKAN_SEBELUMNYA")
-    private String pENDIDIKANSEBELUMNYA;
+	@SerializedName("PENDIDIKAN_SEBELUMNYA")
+	private String pENDIDIKANSEBELUMNYA;
 
-    @SerializedName("PEKERJAAN_WALI")
-    private String pEKERJAANWALI;
+	@SerializedName("PEKERJAAN_WALI")
+	private String pEKERJAANWALI;
 
-    @SerializedName("created_at")
-    private String createdAt;
+	@SerializedName("nama_kelas")
+	private String namaKelas;
 
-    @SerializedName("deleted_by")
-    private String deletedBy;
+	@SerializedName("created_at")
+	private String createdAt;
 
-    @SerializedName("TINGGI_BADAN_1")
-    private String tINGGIBADAN1;
+	@SerializedName("deleted_by")
+	private String deletedBy;
 
-    @SerializedName("BERAT_BADAN_1")
-    private String bERATBADAN1;
+	@SerializedName("id_mapel")
+	private String idMapel;
 
-    @SerializedName("NAMA_IBU")
-    private String nAMAIBU;
+	@SerializedName("id_walikelas")
+	private String idWalikelas;
 
-    @SerializedName("TINGGI_BADAN_2")
-    private String tINGGIBADAN2;
+	@SerializedName("TINGGI_BADAN_1")
+	private String tINGGIBADAN1;
 
-    @SerializedName("TANPA_KETERANGAN")
-    private String tANPAKETERANGAN;
+	@SerializedName("BERAT_BADAN_1")
+	private String bERATBADAN1;
 
-    @SerializedName("updated_at")
-    private String updatedAt;
+	@SerializedName("NAMA_IBU")
+	private String nAMAIBU;
 
-    @SerializedName("SAKIT")
-    private String sAKIT;
+	@SerializedName("TINGGI_BADAN_2")
+	private String tINGGIBADAN2;
 
-    @SerializedName("AGAMA")
-    private String aGAMA;
+	@SerializedName("TANPA_KETERANGAN")
+	private String tANPAKETERANGAN;
 
-    @SerializedName("id_kelas")
-    private String idKelas;
+	@SerializedName("updated_at")
+	private String updatedAt;
 
-    @SerializedName("NAMA_AYAH")
-    private String nAMAAYAH;
+	@SerializedName("SAKIT")
+	private String sAKIT;
 
-    @SerializedName("PEKERJAAN_IBU")
-    private String pEKERJAANIBU;
+	@SerializedName("AGAMA")
+	private String aGAMA;
 
-    @SerializedName("BERAT_BADAN_2")
-    private String bERATBADAN2;
+	@SerializedName("id_kelas")
+	private String idKelas;
 
-    @SerializedName("image")
-    private String image;
+	@SerializedName("id")
+	private String id;
 
-    @SerializedName("NAMA")
-    private String nAMA;
+	@SerializedName("NAMA_AYAH")
+	private String nAMAAYAH;
 
-    @SerializedName("ALAMAT_ORTU_JALAN")
-    private String aLAMATORTUJALAN;
+	@SerializedName("PEKERJAAN_IBU")
+	private String pEKERJAANIBU;
 
-    @SerializedName("PEKERJAAN_AYAH")
-    private String pEKERJAANAYAH;
+	@SerializedName("BERAT_BADAN_2")
+	private String bERATBADAN2;
 
-    @SerializedName("id_kelas_siswa")
-    private String idKelasSiswa;
+	@SerializedName("image")
+	private String image;
 
-    @SerializedName("NAMA_WALI")
-    private String nAMAWALI;
+	@SerializedName("NAMA")
+	private String nAMA;
 
-    @SerializedName("TEMPAT_LAHIR")
-    private String tEMPATLAHIR;
+	@SerializedName("ALAMAT_ORTU_JALAN")
+	private String aLAMATORTUJALAN;
 
-    @SerializedName("created_by")
-    private String createdBy;
+	@SerializedName("PEKERJAAN_AYAH")
+	private String pEKERJAANAYAH;
 
-    @SerializedName("deleted_at")
-    private String deletedAt;
+	@SerializedName("id_TA")
+	private String idTA;
 
-    @SerializedName("id_siswa")
-    private String idSiswa;
+	@SerializedName("id_kelas_siswa")
+	private String idKelasSiswa;
 
-    @SerializedName("NISN")
-    private String nISN;
+	@SerializedName("NAMA_WALI")
+	private String nAMAWALI;
 
-    @SerializedName("ALAMAT")
-    private String aLAMAT;
+	@SerializedName("TEMPAT_LAHIR")
+	private String tEMPATLAHIR;
 
-    @SerializedName("IZIN")
-    private String iZIN;
+	@SerializedName("created_by")
+	private String createdBy;
 
-    @SerializedName("ALAMAT_WALI")
-    private String aLAMATWALI;
+	@SerializedName("deleted_at")
+	private String deletedAt;
 
-    @SerializedName("updated_by")
-    private String updatedBy;
+	@SerializedName("id_siswa")
+	private String idSiswa;
 
-    @SerializedName("update_at")
-    private String updateAt;
+	@SerializedName("NISN")
+	private String nISN;
 
-    @SerializedName("NIS")
-    private String nIS;
+	@SerializedName("ALAMAT")
+	private String aLAMAT;
 
-    @SerializedName("TANGGAL_LAHIR")
-    private String tANGGALLAHIR;
+	@SerializedName("IZIN")
+	private String iZIN;
 
-    public void setJENISKELAMIN(String jENISKELAMIN) {
-        this.jENISKELAMIN = jENISKELAMIN;
-    }
+	@SerializedName("ALAMAT_WALI")
+	private String aLAMATWALI;
 
-    public String getJENISKELAMIN() {
-        return jENISKELAMIN;
-    }
+	@SerializedName("user_id")
+	private String userId;
 
-    public void setPENDIDIKANSEBELUMNYA(String pENDIDIKANSEBELUMNYA) {
-        this.pENDIDIKANSEBELUMNYA = pENDIDIKANSEBELUMNYA;
-    }
+	@SerializedName("updated_by")
+	private String updatedBy;
 
-    public String getPENDIDIKANSEBELUMNYA() {
-        return pENDIDIKANSEBELUMNYA;
-    }
+	@SerializedName("update_at")
+	private String updateAt;
 
-    public void setPEKERJAANWALI(String pEKERJAANWALI) {
-        this.pEKERJAANWALI = pEKERJAANWALI;
-    }
+	@SerializedName("NIS")
+	private String nIS;
 
-    public String getPEKERJAANWALI() {
-        return pEKERJAANWALI;
-    }
+	@SerializedName("TANGGAL_LAHIR")
+	private String tANGGALLAHIR;
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
+	public void setJENISKELAMIN(String jENISKELAMIN){
+		this.jENISKELAMIN = jENISKELAMIN;
+	}
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
+	public String getJENISKELAMIN(){
+		return jENISKELAMIN;
+	}
 
-    public void setDeletedBy(String deletedBy) {
-        this.deletedBy = deletedBy;
-    }
+	public void setPENDIDIKANSEBELUMNYA(String pENDIDIKANSEBELUMNYA){
+		this.pENDIDIKANSEBELUMNYA = pENDIDIKANSEBELUMNYA;
+	}
 
-    public String getDeletedBy() {
-        return deletedBy;
-    }
+	public String getPENDIDIKANSEBELUMNYA(){
+		return pENDIDIKANSEBELUMNYA;
+	}
 
-    public void setTINGGIBADAN1(String tINGGIBADAN1) {
-        this.tINGGIBADAN1 = tINGGIBADAN1;
-    }
+	public void setPEKERJAANWALI(String pEKERJAANWALI){
+		this.pEKERJAANWALI = pEKERJAANWALI;
+	}
 
-    public String getTINGGIBADAN1() {
-        return tINGGIBADAN1;
-    }
+	public String getPEKERJAANWALI(){
+		return pEKERJAANWALI;
+	}
 
-    public void setBERATBADAN1(String bERATBADAN1) {
-        this.bERATBADAN1 = bERATBADAN1;
-    }
+	public void setNamaKelas(String namaKelas){
+		this.namaKelas = namaKelas;
+	}
 
-    public String getBERATBADAN1() {
-        return bERATBADAN1;
-    }
+	public String getNamaKelas(){
+		return namaKelas;
+	}
 
-    public void setNAMAIBU(String nAMAIBU) {
-        this.nAMAIBU = nAMAIBU;
-    }
+	public void setCreatedAt(String createdAt){
+		this.createdAt = createdAt;
+	}
 
-    public String getNAMAIBU() {
-        return nAMAIBU;
-    }
+	public String getCreatedAt(){
+		return createdAt;
+	}
 
-    public void setTINGGIBADAN2(String tINGGIBADAN2) {
-        this.tINGGIBADAN2 = tINGGIBADAN2;
-    }
+	public void setDeletedBy(String deletedBy){
+		this.deletedBy = deletedBy;
+	}
 
-    public String getTINGGIBADAN2() {
-        return tINGGIBADAN2;
-    }
+	public String getDeletedBy(){
+		return deletedBy;
+	}
 
-    public void setTANPAKETERANGAN(String tANPAKETERANGAN) {
-        this.tANPAKETERANGAN = tANPAKETERANGAN;
-    }
+	public void setIdMapel(String idMapel){
+		this.idMapel = idMapel;
+	}
 
-    public String getTANPAKETERANGAN() {
-        return tANPAKETERANGAN;
-    }
+	public String getIdMapel(){
+		return idMapel;
+	}
 
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+	public void setIdWalikelas(String idWalikelas){
+		this.idWalikelas = idWalikelas;
+	}
 
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
+	public String getIdWalikelas(){
+		return idWalikelas;
+	}
 
-    public void setSAKIT(String sAKIT) {
-        this.sAKIT = sAKIT;
-    }
+	public void setTINGGIBADAN1(String tINGGIBADAN1){
+		this.tINGGIBADAN1 = tINGGIBADAN1;
+	}
 
-    public String getSAKIT() {
-        return sAKIT;
-    }
+	public String getTINGGIBADAN1(){
+		return tINGGIBADAN1;
+	}
 
-    public void setAGAMA(String aGAMA) {
-        this.aGAMA = aGAMA;
-    }
+	public void setBERATBADAN1(String bERATBADAN1){
+		this.bERATBADAN1 = bERATBADAN1;
+	}
 
-    public String getAGAMA() {
-        return aGAMA;
-    }
+	public String getBERATBADAN1(){
+		return bERATBADAN1;
+	}
 
-    public void setIdKelas(String idKelas) {
-        this.idKelas = idKelas;
-    }
+	public void setNAMAIBU(String nAMAIBU){
+		this.nAMAIBU = nAMAIBU;
+	}
 
-    public String getIdKelas() {
-        return idKelas;
-    }
+	public String getNAMAIBU(){
+		return nAMAIBU;
+	}
 
-    public void setNAMAAYAH(String nAMAAYAH) {
-        this.nAMAAYAH = nAMAAYAH;
-    }
+	public void setTINGGIBADAN2(String tINGGIBADAN2){
+		this.tINGGIBADAN2 = tINGGIBADAN2;
+	}
 
-    public String getNAMAAYAH() {
-        return nAMAAYAH;
-    }
+	public String getTINGGIBADAN2(){
+		return tINGGIBADAN2;
+	}
 
-    public void setPEKERJAANIBU(String pEKERJAANIBU) {
-        this.pEKERJAANIBU = pEKERJAANIBU;
-    }
+	public void setTANPAKETERANGAN(String tANPAKETERANGAN){
+		this.tANPAKETERANGAN = tANPAKETERANGAN;
+	}
 
-    public String getPEKERJAANIBU() {
-        return pEKERJAANIBU;
-    }
+	public String getTANPAKETERANGAN(){
+		return tANPAKETERANGAN;
+	}
 
-    public void setBERATBADAN2(String bERATBADAN2) {
-        this.bERATBADAN2 = bERATBADAN2;
-    }
+	public void setUpdatedAt(String updatedAt){
+		this.updatedAt = updatedAt;
+	}
 
-    public String getBERATBADAN2() {
-        return bERATBADAN2;
-    }
+	public String getUpdatedAt(){
+		return updatedAt;
+	}
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+	public void setSAKIT(String sAKIT){
+		this.sAKIT = sAKIT;
+	}
 
-    public String getImage() {
-        return image;
-    }
+	public String getSAKIT(){
+		return sAKIT;
+	}
 
-    public void setNAMA(String nAMA) {
-        this.nAMA = nAMA;
-    }
+	public void setAGAMA(String aGAMA){
+		this.aGAMA = aGAMA;
+	}
 
-    public String getNAMA() {
-        return nAMA;
-    }
+	public String getAGAMA(){
+		return aGAMA;
+	}
 
-    public void setALAMATORTUJALAN(String aLAMATORTUJALAN) {
-        this.aLAMATORTUJALAN = aLAMATORTUJALAN;
-    }
+	public void setIdKelas(String idKelas){
+		this.idKelas = idKelas;
+	}
 
-    public String getALAMATORTUJALAN() {
-        return aLAMATORTUJALAN;
-    }
+	public String getIdKelas(){
+		return idKelas;
+	}
 
-    public void setPEKERJAANAYAH(String pEKERJAANAYAH) {
-        this.pEKERJAANAYAH = pEKERJAANAYAH;
-    }
+	public void setId(String id){
+		this.id = id;
+	}
 
-    public String getPEKERJAANAYAH() {
-        return pEKERJAANAYAH;
-    }
+	public String getId(){
+		return id;
+	}
 
-    public void setIdKelasSiswa(String idKelasSiswa) {
-        this.idKelasSiswa = idKelasSiswa;
-    }
+	public void setNAMAAYAH(String nAMAAYAH){
+		this.nAMAAYAH = nAMAAYAH;
+	}
 
-    public String getIdKelasSiswa() {
-        return idKelasSiswa;
-    }
+	public String getNAMAAYAH(){
+		return nAMAAYAH;
+	}
 
-    public void setNAMAWALI(String nAMAWALI) {
-        this.nAMAWALI = nAMAWALI;
-    }
+	public void setPEKERJAANIBU(String pEKERJAANIBU){
+		this.pEKERJAANIBU = pEKERJAANIBU;
+	}
 
-    public String getNAMAWALI() {
-        return nAMAWALI;
-    }
+	public String getPEKERJAANIBU(){
+		return pEKERJAANIBU;
+	}
 
-    public void setTEMPATLAHIR(String tEMPATLAHIR) {
-        this.tEMPATLAHIR = tEMPATLAHIR;
-    }
-
-    public String getTEMPATLAHIR() {
-        return tEMPATLAHIR;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setDeletedAt(String deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    public String getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setIdSiswa(String idSiswa) {
-        this.idSiswa = idSiswa;
-    }
-
-    public String getIdSiswa() {
-        return idSiswa;
-    }
-
-    public void setNISN(String nISN) {
-        this.nISN = nISN;
-    }
-
-    public String getNISN() {
-        return nISN;
-    }
-
-    public void setALAMAT(String aLAMAT) {
-        this.aLAMAT = aLAMAT;
-    }
-
-    public String getALAMAT() {
-        return aLAMAT;
-    }
-
-    public void setIZIN(String iZIN) {
-        this.iZIN = iZIN;
-    }
-
-    public String getIZIN() {
-        return iZIN;
-    }
-
-    public void setALAMATWALI(String aLAMATWALI) {
-        this.aLAMATWALI = aLAMATWALI;
-    }
-
-    public String getALAMATWALI() {
-        return aLAMATWALI;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdateAt(String updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public String getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setNIS(String nIS) {
-        this.nIS = nIS;
-    }
-
-    public String getNIS() {
-        return nIS;
-    }
-
-    public void setTANGGALLAHIR(String tANGGALLAHIR) {
-        this.tANGGALLAHIR = tANGGALLAHIR;
-    }
-
-    public String getTANGGALLAHIR() {
-        return tANGGALLAHIR;
-    }
-
-    @Override
-    public String toString() {
-        return
-                "DataSiswaItem{" +
-                        "jENIS_KELAMIN = '" + jENISKELAMIN + '\'' +
-                        ",pENDIDIKAN_SEBELUMNYA = '" + pENDIDIKANSEBELUMNYA + '\'' +
-                        ",pEKERJAAN_WALI = '" + pEKERJAANWALI + '\'' +
-                        ",created_at = '" + createdAt + '\'' +
-                        ",deleted_by = '" + deletedBy + '\'' +
-                        ",tINGGI_BADAN_1 = '" + tINGGIBADAN1 + '\'' +
-                        ",bERAT_BADAN_1 = '" + bERATBADAN1 + '\'' +
-                        ",nAMA_IBU = '" + nAMAIBU + '\'' +
-                        ",tINGGI_BADAN_2 = '" + tINGGIBADAN2 + '\'' +
-                        ",tANPA_KETERANGAN = '" + tANPAKETERANGAN + '\'' +
-                        ",updated_at = '" + updatedAt + '\'' +
-                        ",sAKIT = '" + sAKIT + '\'' +
-                        ",aGAMA = '" + aGAMA + '\'' +
-                        ",id_kelas = '" + idKelas + '\'' +
-                        ",nAMA_AYAH = '" + nAMAAYAH + '\'' +
-                        ",pEKERJAAN_IBU = '" + pEKERJAANIBU + '\'' +
-                        ",bERAT_BADAN_2 = '" + bERATBADAN2 + '\'' +
-                        ",image = '" + image + '\'' +
-                        ",nAMA = '" + nAMA + '\'' +
-                        ",aLAMAT_ORTU_JALAN = '" + aLAMATORTUJALAN + '\'' +
-                        ",pEKERJAAN_AYAH = '" + pEKERJAANAYAH + '\'' +
-                        ",id_kelas_siswa = '" + idKelasSiswa + '\'' +
-                        ",nAMA_WALI = '" + nAMAWALI + '\'' +
-                        ",tEMPAT_LAHIR = '" + tEMPATLAHIR + '\'' +
-                        ",created_by = '" + createdBy + '\'' +
-                        ",deleted_at = '" + deletedAt + '\'' +
-                        ",id_siswa = '" + idSiswa + '\'' +
-                        ",nISN = '" + nISN + '\'' +
-                        ",aLAMAT = '" + aLAMAT + '\'' +
-                        ",iZIN = '" + iZIN + '\'' +
-                        ",aLAMAT_WALI = '" + aLAMATWALI + '\'' +
-                        ",updated_by = '" + updatedBy + '\'' +
-                        ",update_at = '" + updateAt + '\'' +
-                        ",nIS = '" + nIS + '\'' +
-                        ",tANGGAL_LAHIR = '" + tANGGALLAHIR + '\'' +
-                        "}";
-    }
+	public void setBERATBADAN2(String bERATBADAN2){
+		this.bERATBADAN2 = bERATBADAN2;
+	}
+
+	public String getBERATBADAN2(){
+		return bERATBADAN2;
+	}
+
+	public void setImage(String image){
+		this.image = image;
+	}
+
+	public String getImage(){
+		return image;
+	}
+
+	public void setNAMA(String nAMA){
+		this.nAMA = nAMA;
+	}
+
+	public String getNAMA(){
+		return nAMA;
+	}
+
+	public void setALAMATORTUJALAN(String aLAMATORTUJALAN){
+		this.aLAMATORTUJALAN = aLAMATORTUJALAN;
+	}
+
+	public String getALAMATORTUJALAN(){
+		return aLAMATORTUJALAN;
+	}
+
+	public void setPEKERJAANAYAH(String pEKERJAANAYAH){
+		this.pEKERJAANAYAH = pEKERJAANAYAH;
+	}
+
+	public String getPEKERJAANAYAH(){
+		return pEKERJAANAYAH;
+	}
+
+	public void setIdTA(String idTA){
+		this.idTA = idTA;
+	}
+
+	public String getIdTA(){
+		return idTA;
+	}
+
+	public void setIdKelasSiswa(String idKelasSiswa){
+		this.idKelasSiswa = idKelasSiswa;
+	}
+
+	public String getIdKelasSiswa(){
+		return idKelasSiswa;
+	}
+
+	public void setNAMAWALI(String nAMAWALI){
+		this.nAMAWALI = nAMAWALI;
+	}
+
+	public String getNAMAWALI(){
+		return nAMAWALI;
+	}
+
+	public void setTEMPATLAHIR(String tEMPATLAHIR){
+		this.tEMPATLAHIR = tEMPATLAHIR;
+	}
+
+	public String getTEMPATLAHIR(){
+		return tEMPATLAHIR;
+	}
+
+	public void setCreatedBy(String createdBy){
+		this.createdBy = createdBy;
+	}
+
+	public String getCreatedBy(){
+		return createdBy;
+	}
+
+	public void setDeletedAt(String deletedAt){
+		this.deletedAt = deletedAt;
+	}
+
+	public String getDeletedAt(){
+		return deletedAt;
+	}
+
+	public void setIdSiswa(String idSiswa){
+		this.idSiswa = idSiswa;
+	}
+
+	public String getIdSiswa(){
+		return idSiswa;
+	}
+
+	public void setNISN(String nISN){
+		this.nISN = nISN;
+	}
+
+	public String getNISN(){
+		return nISN;
+	}
+
+	public void setALAMAT(String aLAMAT){
+		this.aLAMAT = aLAMAT;
+	}
+
+	public String getALAMAT(){
+		return aLAMAT;
+	}
+
+	public void setIZIN(String iZIN){
+		this.iZIN = iZIN;
+	}
+
+	public String getIZIN(){
+		return iZIN;
+	}
+
+	public void setALAMATWALI(String aLAMATWALI){
+		this.aLAMATWALI = aLAMATWALI;
+	}
+
+	public String getALAMATWALI(){
+		return aLAMATWALI;
+	}
+
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
+
+	public String getUserId(){
+		return userId;
+	}
+
+	public void setUpdatedBy(String updatedBy){
+		this.updatedBy = updatedBy;
+	}
+
+	public String getUpdatedBy(){
+		return updatedBy;
+	}
+
+	public void setUpdateAt(String updateAt){
+		this.updateAt = updateAt;
+	}
+
+	public String getUpdateAt(){
+		return updateAt;
+	}
+
+	public void setNIS(String nIS){
+		this.nIS = nIS;
+	}
+
+	public String getNIS(){
+		return nIS;
+	}
+
+	public void setTANGGALLAHIR(String tANGGALLAHIR){
+		this.tANGGALLAHIR = tANGGALLAHIR;
+	}
+
+	public String getTANGGALLAHIR(){
+		return tANGGALLAHIR;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"DataSiswaItem{" + 
+			"jENIS_KELAMIN = '" + jENISKELAMIN + '\'' + 
+			",pENDIDIKAN_SEBELUMNYA = '" + pENDIDIKANSEBELUMNYA + '\'' + 
+			",pEKERJAAN_WALI = '" + pEKERJAANWALI + '\'' + 
+			",nama_kelas = '" + namaKelas + '\'' + 
+			",created_at = '" + createdAt + '\'' + 
+			",deleted_by = '" + deletedBy + '\'' + 
+			",id_mapel = '" + idMapel + '\'' + 
+			",id_walikelas = '" + idWalikelas + '\'' + 
+			",tINGGI_BADAN_1 = '" + tINGGIBADAN1 + '\'' + 
+			",bERAT_BADAN_1 = '" + bERATBADAN1 + '\'' + 
+			",nAMA_IBU = '" + nAMAIBU + '\'' + 
+			",tINGGI_BADAN_2 = '" + tINGGIBADAN2 + '\'' + 
+			",tANPA_KETERANGAN = '" + tANPAKETERANGAN + '\'' + 
+			",updated_at = '" + updatedAt + '\'' + 
+			",sAKIT = '" + sAKIT + '\'' + 
+			",aGAMA = '" + aGAMA + '\'' + 
+			",id_kelas = '" + idKelas + '\'' + 
+			",id = '" + id + '\'' + 
+			",nAMA_AYAH = '" + nAMAAYAH + '\'' + 
+			",pEKERJAAN_IBU = '" + pEKERJAANIBU + '\'' + 
+			",bERAT_BADAN_2 = '" + bERATBADAN2 + '\'' + 
+			",image = '" + image + '\'' + 
+			",nAMA = '" + nAMA + '\'' + 
+			",aLAMAT_ORTU_JALAN = '" + aLAMATORTUJALAN + '\'' + 
+			",pEKERJAAN_AYAH = '" + pEKERJAANAYAH + '\'' + 
+			",id_TA = '" + idTA + '\'' + 
+			",id_kelas_siswa = '" + idKelasSiswa + '\'' + 
+			",nAMA_WALI = '" + nAMAWALI + '\'' + 
+			",tEMPAT_LAHIR = '" + tEMPATLAHIR + '\'' + 
+			",created_by = '" + createdBy + '\'' + 
+			",deleted_at = '" + deletedAt + '\'' + 
+			",id_siswa = '" + idSiswa + '\'' + 
+			",nISN = '" + nISN + '\'' + 
+			",aLAMAT = '" + aLAMAT + '\'' + 
+			",iZIN = '" + iZIN + '\'' + 
+			",aLAMAT_WALI = '" + aLAMATWALI + '\'' + 
+			",user_id = '" + userId + '\'' + 
+			",updated_by = '" + updatedBy + '\'' + 
+			",update_at = '" + updateAt + '\'' + 
+			",nIS = '" + nIS + '\'' + 
+			",tANGGAL_LAHIR = '" + tANGGALLAHIR + '\'' + 
+			"}";
+		}
 }

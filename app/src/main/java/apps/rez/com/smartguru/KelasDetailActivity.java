@@ -12,7 +12,7 @@ import android.support.v7.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
-import apps.rez.com.smartguru.Model.Kelas;
+import apps.rez.com.smartguru.Models.Kelas;
 
 public class KelasDetailActivity extends AppCompatActivity {
 
