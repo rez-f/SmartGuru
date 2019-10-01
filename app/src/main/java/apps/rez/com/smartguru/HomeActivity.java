@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -46,6 +47,7 @@ public class HomeActivity extends MainActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
     private CardView cardView;
     private StringBuilder textUrl;
+    private TextView failedWarning;
 
     SharedPrefManager sharedPrefManager;
     private boolean fileServerExist;
@@ -71,6 +73,10 @@ public class HomeActivity extends MainActivity {
             }
         });
         */
+
+        failedWarning = findViewById(R.id.tvPemberitahuan);
+        failedWarning.setText("Gagal terhubung ke server.\nTidak ada data untuk ditampilkan");
+        failedWarning.setVisibility(View.INVISIBLE);
 
         mRecyclerView = findViewById(R.id.recyclerKelas);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
@@ -141,6 +147,8 @@ public class HomeActivity extends MainActivity {
                 Toast.makeText(HomeActivity.this, "Request Gagal", Toast.LENGTH_LONG).show();
                 Log.e("Retrofit Get", t.toString());
                 Toast.makeText(HomeActivity.this, t.toString(), Toast.LENGTH_LONG).show();
+                swipeRefreshLayout.setEnabled(false);
+                failedWarning.setVisibility(View.VISIBLE);
             }
         });
     }

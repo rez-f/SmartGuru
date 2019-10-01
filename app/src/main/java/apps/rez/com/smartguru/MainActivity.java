@@ -1,9 +1,11 @@
 package apps.rez.com.smartguru;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.getMenu().getItem(0).setChecked(true);
         navigationView.getMenu().getItem(1).setChecked(false);
         navigationView.getMenu().getItem(2).setChecked(false);
+        navigationView.getMenu().getItem(3).setCheckable(false);
         navigationView.setCheckedItem(R.id.drawer_item_kelas);
     }
 
@@ -112,12 +115,26 @@ public class MainActivity extends AppCompatActivity
             navigationView.setCheckedItem(R.id.drawer_item_profile);
             overridePendingTransition(0, 0);
         } else if (id == R.id.drawer_item_logout){
-            Toast.makeText(this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
-            sharedPrefManager.clearSP();
-            sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_LOGGED_IN, false);
-            startActivity(new Intent(MainActivity.this, LoginActivity.class)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-            finish();
+
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Konfirmasi");
+            builder.setMessage("Anda yakin ingin logout?");
+            builder.setCancelable(true);
+            builder.setNegativeButton("Tidak",null);
+            builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Toast.makeText(MainActivity.this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
+                    sharedPrefManager.clearSP();
+                    sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_LOGGED_IN, false);
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    finish();
+                }
+            });
+
+            builder.show();
+
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

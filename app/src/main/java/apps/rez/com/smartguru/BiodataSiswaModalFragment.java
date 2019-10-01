@@ -35,7 +35,7 @@ public class BiodataSiswaModalFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_modal_biodata_siswa, container, false);
         // Inflate the layout for this fragment
         getDialog().setTitle("Biodata");
-        Objects.requireNonNull(getDialog().getWindow()).setBackgroundDrawableResource(R.color.colorWhite);
+//        Objects.requireNonNull(getDialog().getWindow()).setBackgroundDrawableResource(R.color.colorWhite);
 
         return view;
     }
@@ -59,18 +59,20 @@ public class BiodataSiswaModalFragment extends DialogFragment {
         tvAlamatOrangTua = view.findViewById(R.id.tvAlamatOrangTua);
 
         assert getArguments() != null;
-        tvNama.setText(getArguments().getString("NAMA_SISWA"));
-        tvNis.setText(getArguments().getString("NIS_SISWA"));
-        tvNisn.setText(getArguments().getString("NISN_SISWA"));
-        tvTempatLahir.setText(getArguments().getString("TEMPAT_LAHIR_SISWA"));
-        tvTanggalLahir.setText(getArguments().getString("TANGGAL_LAHIR_SISWA"));
-        tvJenisKelamin.setText(getArguments().getString("JENIS_KELAMIN_SISWA"));
-        tvAgama.setText(getArguments().getString("AGAMA_SISWA"));
-        tvAlamat.setText(getArguments().getString("ALAMAT_SISWA"));
-        tvNamaAyah.setText(getArguments().getString("NAMA_AYAH_SISWA"));
-        tvPekerjaanAyah.setText(getArguments().getString("PEKERJAAN_AYAH_SISWA"));
-        tvNamaIbu.setText(getArguments().getString("NAMA_IBU_SISWA"));
-        tvPekerjaanIbu.setText(getArguments().getString("PEKERJAAN_IBU_SISWA"));
-        tvAlamatOrangTua.setText(getArguments().getString("ALAMAT_AYAH_SISWA"));
+
+        tvNama.setText(getActivity().getString(R.string.data_value,getArguments().getString("NAMA_SISWA")));
+        tvNis.setText(getActivity().getString(R.string.data_value,getArguments().getString("NIS_SISWA")));
+        tvNisn.setText(getActivity().getString(R.string.data_value,getArguments().getString("NISN_SISWA")));
+        tvTempatLahir.setText(getActivity().getString(R.string.data_value,getArguments().getString("TEMPAT_LAHIR_SISWA")));
+        tvTanggalLahir.setText(getActivity().getString(R.string.data_value,getArguments().getString("TANGGAL_LAHIR_SISWA")));
+        tvJenisKelamin.setText(getActivity().getString(R.string.data_value,getArguments().getString("JENIS_KELAMIN_SISWA")));
+        tvAgama.setText(getActivity().getString(R.string.data_value,getArguments().getString("AGAMA_SISWA")));
+        tvAlamat.setText(getActivity().getString(R.string.data_value,getArguments().getString("ALAMAT_SISWA")));
+        tvNamaAyah.setText(getActivity().getString(R.string.data_value,getArguments().getString("NAMA_AYAH_SISWA")));
+        tvPekerjaanAyah.setText(getActivity().getString(R.string.data_value,getArguments().getString("PEKERJAAN_AYAH_SISWA")));
+        tvNamaIbu.setText(getActivity().getString(R.string.data_value,getArguments().getString("NAMA_IBU_SISWA")));
+        tvPekerjaanIbu.setText(getActivity().getString(R.string.data_value,getArguments().getString("PEKERJAAN_IBU_SISWA")));
+        tvAlamatOrangTua.setText(getActivity().getString(R.string.data_value,"Jl.HR. Soebrantas No.23 Kelurahan Damai"));
+//        tvAlamatOrangTua.setText(getActivity().getString(R.string.data_value,getArguments().getString("ALAMAT_AYAH_SISWA")));
     }
 }

@@ -6,6 +6,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Logout</string>
+    <string name="data_value">: %1$s</string>
+    <string name="data_key_value">%1$s: %2$s</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>

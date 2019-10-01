@@ -73,7 +73,9 @@
         app:hintTextAppearance="@style/MyHintStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutUsername">
+        app:layout_constraintTop_toBottomOf="@+id/layoutUsername"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorWhite">
 
         <EditText
             android:id="@+id/etPassword"
