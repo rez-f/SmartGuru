@@ -44,7 +44,6 @@ public class SiswaActivity extends MainActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private TextView failedWarning;
 
     private StringBuilder textUrl;
     private boolean fileServerExist;
@@ -57,10 +56,6 @@ public class SiswaActivity extends MainActivity {
         drawer.addView(view, 0);
 
         setTitle("Daftar Siswa");
-
-        failedWarning = findViewById(R.id.tvPemberitahuan);
-        failedWarning.setText("Gagal terhubung ke server.\nTidak ada data untuk ditampilkan");
-        failedWarning.setVisibility(View.INVISIBLE);
 
         mRecyclerView = findViewById(R.id.recyclerSiswa);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
@@ -131,7 +126,6 @@ public class SiswaActivity extends MainActivity {
                 Toast.makeText(SiswaActivity.this, "Request Gagal", Toast.LENGTH_LONG).show();
                 Toast.makeText(SiswaActivity.this, t.toString(), Toast.LENGTH_LONG).show();
                 swipeRefreshLayout.setEnabled(false);
-                failedWarning.setVisibility(View.VISIBLE);
             }
         });
     }

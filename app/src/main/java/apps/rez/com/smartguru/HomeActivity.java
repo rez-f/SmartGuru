@@ -47,7 +47,6 @@ public class HomeActivity extends MainActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
     private CardView cardView;
     private StringBuilder textUrl;
-    private TextView failedWarning;
 
     SharedPrefManager sharedPrefManager;
     private boolean fileServerExist;
@@ -73,10 +72,6 @@ public class HomeActivity extends MainActivity {
             }
         });
         */
-
-        failedWarning = findViewById(R.id.tvPemberitahuan);
-        failedWarning.setText("Gagal terhubung ke server.\nTidak ada data untuk ditampilkan");
-        failedWarning.setVisibility(View.INVISIBLE);
 
         mRecyclerView = findViewById(R.id.recyclerKelas);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
@@ -148,7 +143,6 @@ public class HomeActivity extends MainActivity {
                 Log.e("Retrofit Get", t.toString());
                 Toast.makeText(HomeActivity.this, t.toString(), Toast.LENGTH_LONG).show();
                 swipeRefreshLayout.setEnabled(false);
-                failedWarning.setVisibility(View.VISIBLE);
             }
         });
     }
