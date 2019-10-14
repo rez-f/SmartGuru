@@ -1,0 +1,22 @@
+@startuml
+Left to Right Direction
+skinParam packageStyle rectangle
+actor Guru
+
+rectangle "Aplikasi Penilaian Kurikulum 2013"{
+
+    Guru -- (Melihat Daftar Kelas)
+    Guru -- (Melihat Daftar Siswa)
+    Guru -- (Melihat Data Siswa)
+    Guru -- (Mengelola Nilai Siswa)
+    Guru -- (Mencetak Transkrip Nilai Siswa)
+
+    (Melihat Daftar Kelas)..> (Login) : include
+    (Melihat Daftar Siswa)..> (Login) : include
+    (Mengelola Nilai Siswa)..> (Login) : include
+    (Melihat Data Siswa)..> (Login) : include
+    (Mencetak Transkrip Nilai Siswa)..> (Login) : include
+
+}
+
+@enduml

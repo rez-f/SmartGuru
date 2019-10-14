@@ -156,6 +156,7 @@ public class SiswaActivity extends MainActivity {
     private void tampilSiswaDetail(DataSiswaItem siswaItem) {
         Siswa siswa = new Siswa();
 
+        siswa.setIdSiswa(siswaItem.getIdSiswa());
         siswa.setNama(siswaItem.getNAMA());
         siswa.setNis(siswaItem.getNIS());
         siswa.setNisn(siswaItem.getNISN());

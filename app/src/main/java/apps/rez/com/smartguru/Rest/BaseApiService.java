@@ -1,6 +1,7 @@
 package apps.rez.com.smartguru.Rest;
 
 import apps.rez.com.smartguru.Models.DataKelas;
+import apps.rez.com.smartguru.Models.DataKelasDetail;
 import apps.rez.com.smartguru.Models.DataSiswa;
 import apps.rez.com.smartguru.Models.DataSiswaKelas;
 import okhttp3.ResponseBody;
@@ -19,6 +20,9 @@ public interface BaseApiService {
 
     @GET("kelas/id")
     Call<DataKelas> getKelas(@Query("id") int id);
+
+    @GET("kelas/detail/id")
+    Call<DataKelasDetail> getKelasDetail(@Query("id") int id);
 
     @GET("kelas/siswa/id")
     Call<DataSiswaKelas> getSiswaKelas(@Query("id") int id);

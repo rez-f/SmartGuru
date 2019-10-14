@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 public class Siswa implements Parcelable {
 
+    private String idSiswa;
     private String nama;
     private String nis;
     private String nisn;
@@ -22,6 +23,10 @@ public class Siswa implements Parcelable {
     private String namaWali;
     private String alamatWali;
     private String pekerjaanWali;
+
+    public String getIdSiswa() { return idSiswa; }
+
+    public void setIdSiswa(String idSiswa) { this.idSiswa = idSiswa; }
 
     public String getNama() {
         return nama;

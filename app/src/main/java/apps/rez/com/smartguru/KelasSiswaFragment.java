@@ -63,7 +63,7 @@ public class KelasSiswaFragment extends Fragment {
 
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
 
-        getSiswaList();
+        getSiswa();
 
         return view;
     }
@@ -73,7 +73,7 @@ public class KelasSiswaFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public void getSiswaList() {
+    public void getSiswa() {
         final List list = new ArrayList();
 
         mApiService.getSiswaKelas(Integer.parseInt(ID_KELAS)).enqueue(new Callback<DataSiswaKelas>() {
@@ -83,7 +83,7 @@ public class KelasSiswaFragment extends Fragment {
 
                 if (response.body() != null){
                     for (int i = 0; i < response.body().getData().size(); i++) {
-                        list.add(response.body());
+                        list.add(dataSiswaKelasList);
                     }
                     Log.d("Retrofit Get","Code : "+response.code());
                     Log.d("Retrofit Get", "Jumlah data Siswa : " + response.body().getData().get(0).getNAMA());
@@ -115,6 +115,7 @@ public class KelasSiswaFragment extends Fragment {
     private void tampilSiswaDetail(DataSiswaKelasItem siswaItem) {
         Siswa siswa = new Siswa();
 
+        siswa.setIdSiswa(siswaItem.getIdSiswa());
         siswa.setNama(siswaItem.getNAMA());
         siswa.setNis(siswaItem.getNIS());
         siswa.setNisn(siswaItem.getNISN());
