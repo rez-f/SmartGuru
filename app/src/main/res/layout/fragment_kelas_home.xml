@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".KelasHomeFragment">
+    tools:context=".KelasDetailFragment">
 
     <TextView
         android:layout_width="match_parent"

@@ -59,14 +59,14 @@ public class KelasDetailActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        KelasHomeFragment kelasHomeFragment = new KelasHomeFragment();
-        kelasHomeFragment.setArguments(bundle);
+        KelasDetailFragment kelasDetailFragment = new KelasDetailFragment();
+        kelasDetailFragment.setArguments(bundle);
 
         KelasSiswaFragment kelasSiswaFragment = new KelasSiswaFragment();
         kelasSiswaFragment.setArguments(bundle);
 
         adapter.addFragment(kelasSiswaFragment, "Siswa");
-        adapter.addFragment(kelasHomeFragment, "Detail");
+        adapter.addFragment(kelasDetailFragment, "Detail");
 //        adapter.addFragment(new KelasBerkasFragment(), "Berkas");
         viewPager.setAdapter(adapter);
     }

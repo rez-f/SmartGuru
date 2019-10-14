@@ -100,7 +100,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nilai Pengetahuan"
+                    android:text="Input Nilai Pengetahuan"
                     android:textAlignment="center"
                     android:textColor="#494949"
                     android:layout_marginTop="8dp"
@@ -136,7 +136,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nilai Keterampilan"
+                    android:text="Input Nilai Keterampilan"
                     android:textAlignment="center"
                     android:textColor="#494949"
                     android:layout_marginTop="8dp"
@@ -172,7 +172,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rapor Siswa"
+                    android:text="Transkrip Nilai"
                     android:textAlignment="center"
                     android:textColor="#494949"
                     android:layout_marginTop="8dp"

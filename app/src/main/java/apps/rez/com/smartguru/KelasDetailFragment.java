@@ -22,7 +22,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class KelasHomeFragment extends Fragment {
+public class KelasDetailFragment extends Fragment {
 
     BaseApiService mApiService;
     SharedPrefManager sharedPrefManager;
@@ -30,7 +30,7 @@ public class KelasHomeFragment extends Fragment {
 
     private String ID_KELAS;
 
-    public KelasHomeFragment() {
+    public KelasDetailFragment() {
         // Required empty public constructor
     }
 
