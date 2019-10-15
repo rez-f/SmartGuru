@@ -154,7 +154,6 @@ public class HomeActivity extends MainActivity {
         kelas.setMataPelajaran(dataKelas.getMATAPELAJARAN());
         kelas.setIdMapel(Integer.parseInt(dataKelas.getIdMapel()));
 
-        Log.d("DATA MAPEL HOME",dataKelas.getIdMapel());
 
         Intent intent = new Intent(HomeActivity.this, KelasDetailActivity.class);
         intent.putExtra(KelasDetailActivity.EXTRAS_KELAS, kelas);

@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +44,7 @@ public class KelasDetailActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(getString(R.string.title_activity_kelas_detail, kelas.getKelas()));
             bundle.putInt("ID_MAPEL",kelas.getIdMapel());
             bundle.putString("ID_KELAS", String.valueOf(kelas.getId()));
-            Log.d("DATA KELAS KelasDetail",String.valueOf(kelas.getId()));
-            Log.d("DATA MAPEL KelasDetail",""+kelas.getIdMapel());
+            bundle.putString("MATA_PELAJARAN",kelas.getMataPelajaran());
         }
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);

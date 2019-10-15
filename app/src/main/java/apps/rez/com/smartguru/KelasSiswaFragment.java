@@ -36,7 +36,9 @@ public class KelasSiswaFragment extends Fragment {
     BaseApiService mApiService;
     List dataList;
 
+    private int ID_MAPEl;
     private String ID_KELAS;
+    private String MATA_PELAJARAN;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -56,6 +58,8 @@ public class KelasSiswaFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         ID_KELAS = getArguments().getString("ID_KELAS");
+        ID_MAPEl = getArguments().getInt("ID_MAPEL");
+        MATA_PELAJARAN = getArguments().getString("MATA_PELAJARAN");
 
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
 
@@ -81,9 +85,6 @@ public class KelasSiswaFragment extends Fragment {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(dataSiswaKelasList);
                     }
-                    Log.d("Retrofit Get","Code : "+response.code());
-                    Log.d("Retrofit Get", "Jumlah data Siswa : " + response.body().getData().get(0).getNAMA());
-                    Log.d("Retrofit Get", "Jumlah data Siswa : " + response.body().toString());
                     mAdapter = new DataSiswaAdapter(list);
                     mRecyclerView.setAdapter(mAdapter);
 
@@ -111,6 +112,9 @@ public class KelasSiswaFragment extends Fragment {
     private void tampilSiswaDetail(DataSiswaKelasItem siswaItem) {
         Siswa siswa = new Siswa();
 
+        siswa.setIdKelas(Integer.parseInt(siswaItem.getIdKelas()));
+        siswa.setIdMapel(ID_MAPEl);
+        siswa.setMataPelajaran(MATA_PELAJARAN);
         siswa.setIdSiswa(siswaItem.getIdSiswa());
         siswa.setNama(siswaItem.getNAMA());
         siswa.setNis(siswaItem.getNIS());

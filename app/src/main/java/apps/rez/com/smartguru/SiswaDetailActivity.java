@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import apps.rez.com.smartguru.Models.Siswa;
 
@@ -27,7 +28,10 @@ public class SiswaDetailActivity extends AppCompatActivity {
 
         if (siswa != null){
             getSupportActionBar().setTitle(siswa.getNama());
-
+            bundle.putInt("ID_KELAS", siswa.getIdKelas());
+            bundle.putInt("ID_MAPEL", siswa.getIdMapel());
+            bundle.putString("ID_SISWA", siswa.getIdSiswa());
+            bundle.putString("MATA_PELAJARAN", siswa.getMataPelajaran());
             bundle.putString("NAMA_SISWA", siswa.getNama());
             bundle.putString("NIS_SISWA", siswa.getNis());
             bundle.putString("NISN_SISWA", siswa.getNisn());

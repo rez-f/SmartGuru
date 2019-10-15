@@ -29,4 +29,13 @@ public interface BaseApiService {
 
     @GET("siswa/id")
     Call<DataSiswa> getSiswa(@Query("id") int id);
+
+    @FormUrlEncoded
+    @POST("nilai")
+    Call<ResponseBody> inputNilaiPengetahuan(@Field("idSiswa") int idSiswa,
+                                             @Field("idMapel") int idMapel,
+                                             @Field("nilaiNph") int nilaiNph,
+                                             @Field("nilaiUts") int nilaiUts,
+                                             @Field("nilaiUas") int nilaiUas,
+                                             @Field("nilaiRata") int nilaiRata);
 }

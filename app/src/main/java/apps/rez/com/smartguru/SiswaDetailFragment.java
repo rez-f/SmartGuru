@@ -41,6 +41,11 @@ public class SiswaDetailFragment extends Fragment implements View.OnClickListene
         bundle = new Bundle();
 
         assert getArguments() != null;
+
+        bundle.putInt("ID_KELAS", getArguments().getInt("ID_KELAS"));
+        bundle.putInt("ID_MAPEL", getArguments().getInt("ID_MAPEL"));
+        bundle.putString("MATA_PELAJARAN", getArguments().getString("MATA_PELAJARAN"));
+        bundle.putString("ID_SISWA", getArguments().getString("ID_SISWA"));
         bundle.putString("NAMA_SISWA", getArguments().getString("NAMA_SISWA"));
         bundle.putString("NIS_SISWA", getArguments().getString("NIS_SISWA"));
         bundle.putString("NISN_SISWA", getArguments().getString("NISN_SISWA"));
@@ -62,7 +67,7 @@ public class SiswaDetailFragment extends Fragment implements View.OnClickListene
 
         biodata.setOnClickListener(this);
         pengetahuan.setOnClickListener(this);
-        keterampilan.setOnClickListener(this);
+//        keterampilan.setOnClickListener(this);
 //        rapor.setOnClickListener(this);
 //        rapor.setVisibility(View.GONE);
 
@@ -84,24 +89,31 @@ public class SiswaDetailFragment extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.cvBioSiswa) {
+
             BiodataSiswaModalFragment biodataSiswaModalFragment = new BiodataSiswaModalFragment();
             fragmentManager = myContext.getSupportFragmentManager();
-
             biodataSiswaModalFragment.setArguments(bundle);
-
             biodataSiswaModalFragment.show(fragmentManager,"Fragment Biodata Siswa");
+
         }else if(view.getId() == R.id.cvNilaiPengetahuanSiswa){
+
             NilaiPengetahuanSiswaModalFragment nilaiPengetahuanSiswaModalFragment = new NilaiPengetahuanSiswaModalFragment();
             fragmentManager = myContext.getSupportFragmentManager();
+            nilaiPengetahuanSiswaModalFragment.setArguments(bundle);
             nilaiPengetahuanSiswaModalFragment.show(fragmentManager,"Fragment Nilai Pengetahuan Siswa");
+
         }else if (view.getId() == R.id.cvNilaiKeterampilanSiswa){
+
             NilaiKeterampilanModalFragment nilaiKeterampilanModalFragment = new NilaiKeterampilanModalFragment();
             fragmentManager = myContext.getSupportFragmentManager();
             nilaiKeterampilanModalFragment.show(fragmentManager,"Fragment Nilai Keterampilan Siswa");
+
         }else if (view.getId() == R.id.cvRaporSiswa){
+
             RaporSiswaModalFragment raporSiswaModalFragment = new RaporSiswaModalFragment();
             fragmentManager = myContext.getSupportFragmentManager();
             raporSiswaModalFragment.show(fragmentManager,"Fragment Rapor Siswa");
+
         }
     }
 }

@@ -68,9 +68,6 @@ public class KelasBerkasFragment extends Fragment implements View.OnClickListene
 
         DownloadManager downloadmanager = (DownloadManager) getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
         Uri uri = Uri.parse(textUrl+"/nilai/transkrip?idKelas="+ ID_KELAS +"&idMapel="+ ID_MAPEL);
-
-        Toast.makeText(getActivity(), uri.toString(), Toast.LENGTH_LONG).show();
-
         DownloadManager.Request request = new DownloadManager.Request(uri);
         request.setTitle("Transkrip Nilai");
         request.setDescription("Downloading");

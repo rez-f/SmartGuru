@@ -5,6 +5,9 @@ import android.os.Parcelable;
 
 public class Siswa implements Parcelable {
 
+    private int idKelas;
+    private int idMapel;
+    private String mataPelajaran;
     private String idSiswa;
     private String nama;
     private String nis;
@@ -24,9 +27,37 @@ public class Siswa implements Parcelable {
     private String alamatWali;
     private String pekerjaanWali;
 
-    public String getIdSiswa() { return idSiswa; }
+    public int getIdKelas() {
+        return idKelas;
+    }
 
-    public void setIdSiswa(String idSiswa) { this.idSiswa = idSiswa; }
+    public void setIdKelas(int idKelas) {
+        this.idKelas = idKelas;
+    }
+
+    public int getIdMapel() {
+        return idMapel;
+    }
+
+    public void setIdMapel(int idMapel) {
+        this.idMapel = idMapel;
+    }
+
+    public String getMataPelajaran() {
+        return mataPelajaran;
+    }
+
+    public void setMataPelajaran(String mataPelajaran) {
+        this.mataPelajaran = mataPelajaran;
+    }
+
+    public String getIdSiswa() {
+        return idSiswa;
+    }
+
+    public void setIdSiswa(String idSiswa) {
+        this.idSiswa = idSiswa;
+    }
 
     public String getNama() {
         return nama;
@@ -171,6 +202,10 @@ public class Siswa implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.idKelas);
+        dest.writeInt(this.idMapel);
+        dest.writeString(this.mataPelajaran);
+        dest.writeString(this.idSiswa);
         dest.writeString(this.nama);
         dest.writeString(this.nis);
         dest.writeString(this.nisn);
@@ -194,6 +229,10 @@ public class Siswa implements Parcelable {
     }
 
     protected Siswa(Parcel in) {
+        this.idKelas = in.readInt();
+        this.idMapel = in.readInt();
+        this.mataPelajaran = in.readString();
+        this.idSiswa = in.readString();
         this.nama = in.readString();
         this.nis = in.readString();
         this.nisn = in.readString();
