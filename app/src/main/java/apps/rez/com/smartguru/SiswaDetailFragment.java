@@ -63,7 +63,8 @@ public class SiswaDetailFragment extends Fragment implements View.OnClickListene
         biodata.setOnClickListener(this);
         pengetahuan.setOnClickListener(this);
         keterampilan.setOnClickListener(this);
-        rapor.setOnClickListener(this);
+//        rapor.setOnClickListener(this);
+        rapor.setVisibility(View.GONE);
 
         nama = getArguments().getString("nama");
         return view;

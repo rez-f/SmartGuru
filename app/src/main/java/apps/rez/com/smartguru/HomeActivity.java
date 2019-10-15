@@ -120,7 +120,7 @@ public class HomeActivity extends MainActivity {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(response.body());
                     }
-                    Log.d("Retrofit Get", "Jumlah data Kelas : " + String.valueOf(response.body().toString()));
+//                    Log.d("Retrofit Get", "Jumlah data Kelas : " + String.valueOf(response.body().toString()));
                     mAdapter = new KelasAdapter(list);
                     mRecyclerView.setAdapter(mAdapter);
 //                    cardView.setVisibility(View.VISIBLE);
@@ -152,6 +152,9 @@ public class HomeActivity extends MainActivity {
         kelas.setId(Integer.parseInt(dataKelas.getIdKelas()));
         kelas.setKelas(dataKelas.getNamaKelas());
         kelas.setMataPelajaran(dataKelas.getMATAPELAJARAN());
+        kelas.setIdMapel(Integer.parseInt(dataKelas.getIdMapel()));
+
+        Log.d("DATA MAPEL HOME",dataKelas.getIdMapel());
 
         Intent intent = new Intent(HomeActivity.this, KelasDetailActivity.class);
         intent.putExtra(KelasDetailActivity.EXTRAS_KELAS, kelas);

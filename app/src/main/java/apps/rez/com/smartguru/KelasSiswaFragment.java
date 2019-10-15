@@ -36,8 +36,6 @@ public class KelasSiswaFragment extends Fragment {
     BaseApiService mApiService;
     List dataList;
 
-    SharedPrefManager sharedPrefManager;
-
     private String ID_KELAS;
 
     private RecyclerView mRecyclerView;
@@ -56,8 +54,6 @@ public class KelasSiswaFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.recyclerSiswa);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-        sharedPrefManager = new SharedPrefManager(container.getContext());
 
         ID_KELAS = getArguments().getString("ID_KELAS");
 

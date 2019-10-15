@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".KelasBerkasFragment">
+    tools:context=".KelasBerkasFragment"
+    android:paddingTop="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btnTranskrip"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Three"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="40dp"
+        android:text="Transkrip Nilai"/>
 
-</RelativeLayout>
+</LinearLayout>

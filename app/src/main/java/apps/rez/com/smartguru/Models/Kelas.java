@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 public class Kelas implements Parcelable {
     private int id;
+    private int idMapel;
     private String kelas;
     private String mataPelajaran;
 
@@ -14,6 +15,14 @@ public class Kelas implements Parcelable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdMapel() {
+        return idMapel;
+    }
+
+    public void setIdMapel(int idMapel) {
+        this.idMapel = idMapel;
     }
 
     public String getKelas() {
@@ -32,10 +41,6 @@ public class Kelas implements Parcelable {
         this.mataPelajaran = mataPelajaran;
     }
 
-    public static Creator<Kelas> getCREATOR() {
-        return CREATOR;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -44,6 +49,7 @@ public class Kelas implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.id);
+        dest.writeInt(this.idMapel);
         dest.writeString(this.kelas);
         dest.writeString(this.mataPelajaran);
     }
@@ -53,11 +59,12 @@ public class Kelas implements Parcelable {
 
     protected Kelas(Parcel in) {
         this.id = in.readInt();
+        this.idMapel = in.readInt();
         this.kelas = in.readString();
         this.mataPelajaran = in.readString();
     }
 
-    public static final Parcelable.Creator<Kelas> CREATOR = new Parcelable.Creator<Kelas>() {
+    public static final Creator<Kelas> CREATOR = new Creator<Kelas>() {
         @Override
         public Kelas createFromParcel(Parcel source) {
             return new Kelas(source);
