@@ -23,7 +23,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@mipmap/ic_launcher_update_round"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -36,6 +36,8 @@
     <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        android:paddingTop="40dp"
         app:columnCount="3"
         app:rowCount="2">
 
@@ -156,29 +158,29 @@
             app:layout_columnWeight="1"
             app:layout_rowWeight="1">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="90dp"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="90dp"-->
+<!--                android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                android:layout_margin="16dp"-->
+<!--                android:orientation="vertical">-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_assignment_black_48dp" />
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:src="@drawable/ic_assignment_black_48dp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Transkrip Nilai"
-                    android:textAlignment="center"
-                    android:textColor="#494949"
-                    android:layout_marginTop="8dp"
-                    android:textSize="12sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Transkrip Nilai"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="#494949"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:textSize="12sp" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
         </android.support.v7.widget.CardView>
 
