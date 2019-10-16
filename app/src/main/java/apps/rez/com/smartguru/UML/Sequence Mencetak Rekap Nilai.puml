@@ -66,12 +66,12 @@ KelasDetailActivity -> WebserviceAPI : HTTP Request
     Berupa JSON
         end note
 
-KelasDetailActivity -> Browser : startActivity()
+KelasDetailActivity -> DownloadManager : startActivity()
     deactivate KelasDetailActivity
-    activate Browser
+    activate DownloadManager
 
-Guru -> Browser : Klik Icon Printer
-    deactivate Browser
+Guru -> DownloadManager : Berkas Rekap Tersimpan
+    deactivate DownloadManager
     activate Guru
     deactivate Guru
 
