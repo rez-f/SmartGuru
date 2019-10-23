@@ -1,0 +1,90 @@
+@startuml
+
+class HomeActivity <<Java Class>>{
+  BaseApiService mApiService
+  RecyclerView mRecyclerView
+  RecyclerView.Adapter mAdapter
+  RecyclerView.LayoutManager mLayoutManager
+  SwipeRefreshLayout swipeRefreshLayout
+  CardView cardView
+  StringBuilder textUrl
+  sharedPrefManager
+  boolean fileServerExist
+  #void onCreate(Bundle savedInstanceState)
+  -void getKelasList()
+  -void tampilKelasDetail(KelasItem dataKelas)
+  -private void getServerIpFromFile()
+}
+
+class LoginActivity <<Java Class>>{
+    Button loginButton;
+    ImageView appLogo
+    EditText username
+    EditText password
+    ProgressDialog loading
+    Context mContext
+    BaseApiService mApiService
+    SharedPrefManager sharedPrefManager
+    private StringBuilder textUrl
+    private boolean fileServerExist
+    #void onCreate(Bundle savedInstanceState)
+}
+
+class KelasDetailActivity <<Java Class>>{
+    String EXTRAS_KELAS
+    TabLayout tabLayout
+    ViewPager viewPager
+    Kelas kelas
+    Bundle bundle
+    #void onCreate(Bundle savedInstanceState)
+    +boolean onSupportNavigateUp()
+    -void setupViewPager(ViewPager viewPager)
+}
+
+class SiswaDetailFragment <<Java Class>>{
+    -String nama;
+    -CardView biodata;
+    -CardView pengetahuan;
+    -CardView keterampilan;
+    -CardView rapor;
+    -FragmentActivity myContext;
+    -FragmentManager fragmentManager;
+    -Bundle bundle;
+    +View onCreateView()
+    +void onViewCreated()
+    +void onAttach()
+    +void onClick()
+}
+
+package WebServiceAPI{
+    class RetrofitClient <<Java Class>>{
+            Retrofit retrofit
+            +Retrofit getClient(String baseUrl)
+        }
+
+    interface BaseApiService <<Java Interface>>{
+        +Call<ResponseBody> authLogin()
+        +Call<DataKelas> getKelas()
+        +Call<DataKelasDetail> getKelasDetail()
+        +Call<DataSiswaKelas> getSiswaKelas()
+        +Call<DataSiswa> getSiswa()
+        +Call<ResponseBody> inputNilaiPengetahuan()
+    }
+
+    class UtilsAPI <<Java Class>>{
+        String BASE_URL_API
+        +BaseApiService getAPIService()
+    }
+}
+
+HomeActivity -- BaseApiService
+LoginActivity -- BaseApiService
+SiswaDetailFragment -- BaseApiService
+KelasDetailActivity -- BaseApiService
+BaseApiService *-- RetrofitClient
+RetrofitClient *-- UtilsAPI
+
+hide <<Java Class>> circle
+hide <<Java Interface>> circle
+
+@enduml
