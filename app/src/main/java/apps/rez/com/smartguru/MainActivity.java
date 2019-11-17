@@ -134,7 +134,6 @@ public class MainActivity extends AppCompatActivity
             });
 
             builder.show();
-
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

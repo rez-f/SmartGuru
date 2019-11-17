@@ -1,0 +1,69 @@
+@startuml
+
+autonumber
+hide footbox
+title Login Actor
+
+Actor Actor
+boundary Home
+boundary Login
+control LoginActivity
+control HomeActivity
+control WebserviceAPI
+
+LoginActivity --> Login : setContentView()
+    activate LoginActivity
+    activate Login
+
+Actor -> Login : input username, password
+    activate Actor
+
+Actor -> Login : klik tombol login
+    deactivate Actor
+
+Login -> LoginActivity : login()
+    deactivate Login
+    note right of Login
+    Mengirim username, password
+        end note
+
+LoginActivity -> WebserviceAPI : HTTP Request
+    deactivate LoginActivity
+    note right of LoginActivity
+    POST Data (username,password)
+        end note
+
+    activate WebserviceAPI
+
+    return HTTP Response
+
+    activate LoginActivity
+
+    note right of LoginActivity
+        Berupa JSON
+    end note
+
+LoginActivity -> HomeActivity : startActivity()
+    deactivate LoginActivity
+    activate HomeActivity
+
+HomeActivity -> WebserviceAPI : HTTP Request
+    deactivate HomeActivity
+    activate WebserviceAPI
+
+    note right of HomeActivity
+    GET Data Kelas
+        end note
+
+    return HTTP Response
+    activate HomeActivity
+
+    note right of HomeActivity
+    Berupa JSON
+        end note
+
+HomeActivity --> Home : setContentView()
+    deactivate HomeActivity
+    activate Home
+    deactivate Home
+@enduml
