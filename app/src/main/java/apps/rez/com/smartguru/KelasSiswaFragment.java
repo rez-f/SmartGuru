@@ -82,7 +82,7 @@ public class KelasSiswaFragment extends Fragment {
                 DataSiswaKelas dataSiswaKelasList = response.body();
 
                 if (response.body() != null){
-                    Toast.makeText(getActivity(), response.body().toString(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), response.body().toString(), Toast.LENGTH_SHORT).show();
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(dataSiswaKelasList);
                     }
